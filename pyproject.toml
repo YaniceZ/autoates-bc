@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autoates-bc"
+version = "0.1.0"
+description = "AutoATES v2.0 port with Monte Carlo uncertainty propagation, applied to the BC Coast Mountains"
+requires-python = ">=3.10"
+license = { text = "GPL-3.0-or-later" }
+dependencies = [
+    "numpy",
+    "scipy",
+    "numba",
+    "rasterio",
+    "scikit-image",
+    "pyproj",
+    "requests",
+    "matplotlib",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
