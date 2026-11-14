@@ -196,14 +196,14 @@ def main():
     if c is not None:
         s = U.summarize(c)
         ph = U.prob_higher(c, det["lidar10_lidarpcc"])
-        fig, axes = plt.subplots(1, 3, figsize=(W2, W2 * 0.375))
+        fig, axes = plt.subplots(1, 3, figsize=(W2, W2 * 0.43))
         b10.show(axes[0], class_rgb(det["lidar10_lidarpcc"]), "a", "AutoATES, single run", bar=True, ticks="both")
         class_legend(axes[0], loc=(0.0, -0.24), ncol=2)
         b10.show(axes[1], class_rgb(s["mode"], conf_alpha(s["confidence"])), "b", "Most likely class, faded by agreement", ticks="x")
         vba_legend(axes[1], [0.33, -0.47, 0.42, 0.22])
         b10.show(axes[2], scalar_rgb(ph, ORANGE, 0, 0.8), "c", "Probability of a higher class than (a)", ticks="x")
         colorbar(fig, axes[2], ORANGE, 0, 0.8, "probability", [0, 0.4, 0.8], y=-0.3)
-        fig.subplots_adjust(left=0.05, right=0.99, top=0.93, bottom=0.25, wspace=0.08)
+        fig.subplots_adjust(left=0.05, right=0.99, top=0.94, bottom=0.34, wspace=0.08)
         save(fig, "fig2_lidar_probabilistic")
 
     # ---------------- Fig 3: province-wide inputs against the lidar result
@@ -289,6 +289,73 @@ def main():
             ax.text(-0.3, 1.08, letter, transform=ax.transAxes, fontsize=9, fontweight="bold", va="bottom", ha="left")
         fig.subplots_adjust(left=0.075, right=0.975, top=0.82, bottom=0.25, wspace=0.5)
         save(fig, "fig4_validation_and_sources")
+
+    # ---------------- Fig 5: expert benchmark sites
+    bench = json.loads((R / "benchmark.json").read_text(encoding="utf8")) if (R / "benchmark.json").exists() else {}
+    sites = [(k, lab) for k, lab in (("Connaught", "Connaught Creek"), ("BowSummit", "Bow Summit"))
+             if (R / f"benchmark_{k}.npz").exists() and k in bench and "all" in bench[k].get("experiments", {})]
+    if sites:
+        fig = plt.figure(figsize=(W2, W2 * 0.78))
+        gs = fig.add_gridspec(2, 3, left=0.045, right=0.72, top=0.95, bottom=0.2, wspace=0.06, hspace=0.14)
+        gb = fig.add_gridspec(2, 1, left=0.81, right=0.985, top=0.95, bottom=0.2, hspace=0.14)
+        letters = iter("abcdefgh")
+        for r, (key, label) in enumerate(sites):
+            z = np.load(R / f"benchmark_{key}.npz")
+            dem, valid, det, counts = z["dem"], z["valid"], z["det"], z["counts_all"].astype(float)
+            xres, yres = z["res"]
+            inside = dem != -9999
+            ls = LightSource(azdeg=315, altdeg=42)
+            hs = ls.hillshade(np.where(inside, dem, np.nan), vert_exag=1.3, dx=xres, dy=yres)
+            shade = np.where(inside, 0.38 + 0.62 * np.nan_to_num(hs, nan=1.0), 1.0)
+            counts[1] += counts[0]
+            counts[0] = 0
+            prob = counts / np.maximum(counts.sum(axis=0), 1)
+            mode, conf = prob.argmax(axis=0), prob.max(axis=0)
+            mapped = (valid >= 0) & inside
+            rows_, cols_ = np.where(mapped)
+            sl = (slice(max(rows_.min() - 3, 0), rows_.max() + 4), slice(max(cols_.min() - 3, 0), cols_.max() + 4))
+            panels = [(class_rgb(np.where(mapped, np.where(valid == 0, 1, valid), 0)), "Expert benchmark"),
+                      (class_rgb(np.where(mapped, np.where(det == 0, 1, det), 0)), "AutoATES, single run"),
+                      (class_rgb(np.where(mapped, mode, 0), conf_alpha(conf)), "Ensemble, faded by agreement")]
+            for c, (rgb, title) in enumerate(panels):
+                ax = fig.add_subplot(gs[r, c])
+                img = np.clip(rgb * shade[..., None], 0, 1)[sl]
+                h, w = img.shape[:2]
+                ax.imshow(img, extent=(0, w * xres / 1000, 0, h * yres / 1000), interpolation="nearest")
+                ax.set_xticks([]); ax.set_yticks([])
+                for sp in ax.spines.values():
+                    sp.set_linewidth(0.4)
+                ax.text(0.0, 1.03, next(letters), transform=ax.transAxes, fontsize=9, fontweight="bold", va="bottom")
+                ax.text(0.1, 1.035, title, transform=ax.transAxes, fontsize=7, va="bottom")
+                if c == 0:
+                    ax.set_ylabel(label, fontsize=7.5, fontweight="bold", labelpad=3)
+                if c == 0:
+                    ax.add_patch(Rectangle((0.15, 0.15), 1.0, 0.05, fc=INK, ec=INK, lw=0.4))
+                    ax.text(0.65, 0.26, "1 km", fontsize=5.5, ha="center", va="bottom", color=INK)
+                if r == len(sites) - 1 and c == 0:
+                    class_legend(ax, loc=(0.0, -0.08), ncol=2)
+                if r == len(sites) - 1 and c == 2:
+                    vba_legend(ax, [0.3, -0.33, 0.6, 0.2])
+            ax = fig.add_subplot(gb[r, 0])
+            rows = bench[key]["experiments"]["all"]["accuracy_by_confidence"]
+            rows = [x for x in rows if x["deterministic_accuracy"] is not None and x["share"] >= 0.03]
+            xs = np.arange(len(rows))
+            acc = [x["deterministic_accuracy"] * 100 for x in rows]
+            ax.bar(xs, acc, width=0.62, color="#2c6fbb", ec="none")
+            for x, a_ in zip(xs, acc):
+                ax.text(x, a_ + 2, f"{a_:.0f}%", ha="center", va="bottom", fontsize=6.3, color=INK)
+            labs = {"0-0.5": "<50%", "0.5-0.7": "50-70%", "0.7-0.9": "70-90%", "0.9-1.0": ">90%"}
+            ax.set_xticks(xs)
+            ax.set_xticklabels([f"{labs[x['confidence']]}\n({x['share'] * 100:.0f}%)" for x in rows], fontsize=5.6)
+            ax.set_ylim(0, 112)
+            ax.set_yticks([0, 50, 100])
+            ax.set_ylabel("Single run matches experts (%)", labelpad=1)
+            if r == len(sites) - 1:
+                ax.set_xlabel("Ensemble agreement\n(share of area in brackets)")
+            for sp in ("top", "right"):
+                ax.spines[sp].set_visible(False)
+            ax.text(-0.42, 1.03, next(letters), transform=ax.transAxes, fontsize=9, fontweight="bold", va="bottom")
+        save(fig, "fig5_expert_benchmarks")
 
 
 if __name__ == "__main__":

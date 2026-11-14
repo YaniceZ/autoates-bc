@@ -1,0 +1,1029 @@
+{
+ "error_model_fitted_at_connaught": {
+  "strata": [
+   {
+    "cover": "open",
+    "lo": 0,
+    "hi": 15,
+    "n": 1471,
+    "bias_m": 2.5013039112091064,
+    "sd_m": 4.210310935974121
+   },
+   {
+    "cover": "open",
+    "lo": 15,
+    "hi": 30,
+    "n": 7563,
+    "bias_m": 1.549810528755188,
+    "sd_m": 4.378159046173096
+   },
+   {
+    "cover": "open",
+    "lo": 30,
+    "hi": 45,
+    "n": 6211,
+    "bias_m": 1.529160976409912,
+    "sd_m": 6.713686943054199
+   },
+   {
+    "cover": "open",
+    "lo": 45,
+    "hi": 91,
+    "n": 1791,
+    "bias_m": 5.378163814544678,
+    "sd_m": 12.717175483703613
+   },
+   {
+    "cover": "forest",
+    "lo": 0,
+    "hi": 15,
+    "n": 374,
+    "bias_m": 9.601354598999023,
+    "sd_m": 6.640011310577393
+   },
+   {
+    "cover": "forest",
+    "lo": 15,
+    "hi": 30,
+    "n": 2653,
+    "bias_m": 8.845135688781738,
+    "sd_m": 6.608807563781738
+   },
+   {
+    "cover": "forest",
+    "lo": 30,
+    "hi": 45,
+    "n": 3258,
+    "bias_m": 4.965671062469482,
+    "sd_m": 6.741450786590576
+   },
+   {
+    "cover": "forest",
+    "lo": 45,
+    "hi": 91,
+    "n": 287,
+    "bias_m": 7.567290306091309,
+    "sd_m": 11.826180458068848
+   }
+  ],
+  "corr_px": 1.7999999999999998,
+  "slope_error_sd_deg": 3.444014072418213,
+  "simulated_slope_error_sd_deg": 3.423999786376953,
+  "lidar_overlap_cells": 23608,
+  "bias_m": 3.3860371112823486,
+  "sd_m": 7.197688102722168
+ },
+ "Connaught": {
+  "parameters": {
+   "SAT12": 18,
+   "SAT23": 29,
+   "SAT34": 39,
+   "AAT3": 34,
+   "TREE1": 5,
+   "CC2": 25,
+   "WIN_SIZE": 3
+  },
+  "port_equals_published_map": 0.9854199301120617,
+  "published_accuracy": 0.7512850526744363,
+  "density_nodata_share_of_study_area": 0.0,
+  "experiments": {
+   "dem": {
+    "cells": 19649,
+    "deterministic_accuracy": 0.7384599725176854,
+    "most_likely_accuracy": 0.7471118123059698,
+    "brier_deterministic": 0.5230800549646293,
+    "brier_ensemble": 0.4295096238994351,
+    "underrated_share": 0.13710621405669499,
+    "overrated_share": 0.12443381342561963,
+    "expert_class_has_prob_ge_0_1": 0.8398391775662883,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 55597,
+      "mean_predicted": 0.008263035775311617,
+      "observed": 0.06601075597604188
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 2407,
+      "mean_predicted": 0.2875820523473203,
+      "observed": 0.35438304943913584
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 1989,
+      "mean_predicted": 0.49936651583710406,
+      "observed": 0.48516842634489693
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 2219,
+      "mean_predicted": 0.7053132041460117,
+      "observed": 0.6182965299684543
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 16384,
+      "mean_predicted": 0.972843017578125,
+      "observed": 0.78057861328125
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.002900910987836531,
+      "deterministic_accuracy": 0.3508771929824561
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.10031044836887373,
+      "deterministic_accuracy": 0.4916286149162861
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.14977861468777037,
+      "deterministic_accuracy": 0.6350662589194699
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.7470100259555194,
+      "deterministic_accuracy": 0.7938411227687696
+     }
+    ],
+    "flagging": [
+     {
+      "threshold": 0.1,
+      "area_flagged": 0.14733574227696067,
+      "underrated_caught": 0.447290274684484,
+      "precision": 0.4162348877374784
+     },
+     {
+      "threshold": 0.2,
+      "area_flagged": 0.09975062344139651,
+      "underrated_caught": 0.3392724573125464,
+      "precision": 0.4663265306122449
+     },
+     {
+      "threshold": 0.3,
+      "area_flagged": 0.066161127792763,
+      "underrated_caught": 0.25760950259836674,
+      "precision": 0.5338461538461539
+     }
+    ],
+    "manual_mappers": {
+     "cells": 19669,
+     "share_where_mappers_disagree": 0.5289541918755402,
+     "mean_confidence_mappers_agree": 0.9247263896384242,
+     "mean_confidence_mappers_disagree": 0.9142743175701654,
+     "share_conf_below_0_8_mappers_agree": 0.1559633027522936,
+     "share_conf_below_0_8_mappers_disagree": 0.1782006920415225
+    }
+   },
+   "forest": {
+    "cells": 19649,
+    "deterministic_accuracy": 0.7384599725176854,
+    "most_likely_accuracy": 0.7222759427960711,
+    "brier_deterministic": 0.5230800549646293,
+    "brier_ensemble": 0.4602958929207593,
+    "underrated_share": 0.13710621405669499,
+    "overrated_share": 0.12443381342561963,
+    "expert_class_has_prob_ge_0_1": 0.8427400885541249,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 54508,
+      "mean_predicted": 0.02529793791736993,
+      "observed": 0.07294342114918911
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 3448,
+      "mean_predicted": 0.26893851508120653,
+      "observed": 0.2923433874709977
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 2326,
+      "mean_predicted": 0.4996775580395529,
+      "observed": 0.4931212381771281
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 2950,
+      "mean_predicted": 0.7219966101694915,
+      "observed": 0.5986440677966102
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 15364,
+      "mean_predicted": 0.9145157511064828,
+      "observed": 0.7649049726633689
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.007633976283780345,
+      "deterministic_accuracy": 0.6266666666666667
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.1084024632296809,
+      "deterministic_accuracy": 0.6197183098591549
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.397984630261082,
+      "deterministic_accuracy": 0.7659846547314578
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.48597893022545674,
+      "deterministic_accuracy": 0.7441616923238036
+     }
+    ],
+    "flagging": [
+     {
+      "threshold": 0.1,
+      "area_flagged": 0.051707466028805535,
+      "underrated_caught": 0.12657757980697848,
+      "precision": 0.33562992125984253
+     },
+     {
+      "threshold": 0.2,
+      "area_flagged": 0.03496361137971398,
+      "underrated_caught": 0.07980697847067557,
+      "precision": 0.3129548762736536
+     },
+     {
+      "threshold": 0.3,
+      "area_flagged": 0.022647462975215023,
+      "underrated_caught": 0.04491462509279881,
+      "precision": 0.27191011235955054
+     }
+    ],
+    "manual_mappers": {
+     "cells": 19669,
+     "share_where_mappers_disagree": 0.5289541918755402,
+     "mean_confidence_mappers_agree": 0.8670026983270374,
+     "mean_confidence_mappers_disagree": 0.853787966166859,
+     "share_conf_below_0_8_mappers_agree": 0.1798165137614679,
+     "share_conf_below_0_8_mappers_disagree": 0.25317185697808536
+    }
+   },
+   "params": {
+    "cells": 19649,
+    "deterministic_accuracy": 0.7384599725176854,
+    "most_likely_accuracy": 0.7208000407145402,
+    "brier_deterministic": 0.5230800549646293,
+    "brier_ensemble": 0.5075940047839584,
+    "underrated_share": 0.13710621405669499,
+    "overrated_share": 0.12443381342561963,
+    "expert_class_has_prob_ge_0_1": 0.7895058272685633,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 55946,
+      "mean_predicted": 0.001906838737353877,
+      "observed": 0.07750330676009008
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 1954,
+      "mean_predicted": 0.26758955987717503,
+      "observed": 0.3858751279426817
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 2135,
+      "mean_predicted": 0.49862763466042165,
+      "observed": 0.4866510538641686
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 1813,
+      "mean_predicted": 0.7272531715388858,
+      "observed": 0.5797021511307225
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 16748,
+      "mean_predicted": 0.9933347265345115,
+      "observed": 0.7445068067828995
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.0031044836887373405,
+      "deterministic_accuracy": 0.36065573770491804
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.06672095272024021,
+      "deterministic_accuracy": 0.6720061022120518
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.1061122703445468,
+      "deterministic_accuracy": 0.6705035971223021
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.8240622932464756,
+      "deterministic_accuracy": 0.7540143280632411
+     }
+    ],
+    "flagging": [
+     {
+      "threshold": 0.1,
+      "area_flagged": 0.07903710112473918,
+      "underrated_caught": 0.1714922048997773,
+      "precision": 0.29748873148744365
+     },
+     {
+      "threshold": 0.2,
+      "area_flagged": 0.07211562929411167,
+      "underrated_caught": 0.16592427616926503,
+      "precision": 0.31545518701482006
+     },
+     {
+      "threshold": 0.3,
+      "area_flagged": 0.03918774492340577,
+      "underrated_caught": 0.09094283593170008,
+      "precision": 0.3181818181818182
+     }
+    ],
+    "manual_mappers": {
+     "cells": 19669,
+     "share_where_mappers_disagree": 0.5289541918755402,
+     "mean_confidence_mappers_agree": 0.9527728008634645,
+     "mean_confidence_mappers_disagree": 0.9334630911188004,
+     "share_conf_below_0_8_mappers_agree": 0.12833243389098759,
+     "share_conf_below_0_8_mappers_disagree": 0.16858900422914264
+    }
+   },
+   "inputs": {
+    "cells": 19649,
+    "deterministic_accuracy": 0.7384599725176854,
+    "most_likely_accuracy": 0.7319456460888595,
+    "brier_deterministic": 0.5230800549646293,
+    "brier_ensemble": 0.4083902870375083,
+    "underrated_share": 0.13710621405669499,
+    "overrated_share": 0.12443381342561963,
+    "expert_class_has_prob_ge_0_1": 0.8976538246221182,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 52565,
+      "mean_predicted": 0.02852573004851137,
+      "observed": 0.05813754399315134
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 5166,
+      "mean_predicted": 0.28248644986449867,
+      "observed": 0.3124274099883856
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 3262,
+      "mean_predicted": 0.50181330472103,
+      "observed": 0.4978540772532189
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 4824,
+      "mean_predicted": 0.711891583747927,
+      "observed": 0.6457296849087893
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 12779,
+      "mean_predicted": 0.9092370295015259,
+      "observed": 0.8013146568589091
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.017812611328820806,
+      "deterministic_accuracy": 0.5114285714285715
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.18331721716117869,
+      "deterministic_accuracy": 0.5744031093836758
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.42358389739935876,
+      "deterministic_accuracy": 0.7622251591974047
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.37528627411064175,
+      "deterministic_accuracy": 0.8025494982370491
+     }
+    ],
+    "flagging": [
+     {
+      "threshold": 0.1,
+      "area_flagged": 0.14641966512290702,
+      "underrated_caught": 0.43429844097995546,
+      "precision": 0.40667361835245047
+     },
+     {
+      "threshold": 0.2,
+      "area_flagged": 0.0907934246017609,
+      "underrated_caught": 0.3058648849294729,
+      "precision": 0.4618834080717489
+     },
+     {
+      "threshold": 0.3,
+      "area_flagged": 0.05547356099547051,
+      "underrated_caught": 0.20341499628804752,
+      "precision": 0.5027522935779817
+     }
+    ],
+    "manual_mappers": {
+     "cells": 19669,
+     "share_where_mappers_disagree": 0.5289541918755402,
+     "mean_confidence_mappers_agree": 0.831629789530491,
+     "mean_confidence_mappers_disagree": 0.8112817185697807,
+     "share_conf_below_0_8_mappers_agree": 0.30879654614139235,
+     "share_conf_below_0_8_mappers_disagree": 0.3917723952326028
+    }
+   },
+   "all": {
+    "cells": 19649,
+    "deterministic_accuracy": 0.7384599725176854,
+    "most_likely_accuracy": 0.7118428418749045,
+    "brier_deterministic": 0.5230800549646293,
+    "brier_ensemble": 0.4315143416967785,
+    "underrated_share": 0.13710621405669499,
+    "overrated_share": 0.12443381342561963,
+    "expert_class_has_prob_ge_0_1": 0.8855921420937453,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 53321,
+      "mean_predicted": 0.023100935841413327,
+      "observed": 0.06181429455561599
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 4432,
+      "mean_predicted": 0.2871277075812274,
+      "observed": 0.40455776173285196
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 3110,
+      "mean_predicted": 0.5001398713826366,
+      "observed": 0.4958199356913183
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 4194,
+      "mean_predicted": 0.7066201716738196,
+      "observed": 0.5493562231759657
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 13539,
+      "mean_predicted": 0.9325419159465248,
+      "observed": 0.791343526109757
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.016285816072064738,
+      "deterministic_accuracy": 0.55625
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.17324036846658863,
+      "deterministic_accuracy": 0.5916568742655699
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.29752150236653263,
+      "deterministic_accuracy": 0.679609989736572
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.512952313094814,
+      "deterministic_accuracy": 0.827959122928862
+     }
+    ],
+    "flagging": [
+     {
+      "threshold": 0.1,
+      "area_flagged": 0.17542877500127232,
+      "underrated_caught": 0.4710467706013363,
+      "precision": 0.3681462140992167
+     },
+     {
+      "threshold": 0.2,
+      "area_flagged": 0.11425517838057916,
+      "underrated_caught": 0.3281365998515219,
+      "precision": 0.3937639198218263
+     },
+     {
+      "threshold": 0.3,
+      "area_flagged": 0.07384599725176853,
+      "underrated_caught": 0.22791388270230142,
+      "precision": 0.4231564438318401
+     }
+    ],
+    "manual_mappers": {
+     "cells": 19669,
+     "share_where_mappers_disagree": 0.5289541918755402,
+     "mean_confidence_mappers_agree": 0.8610690771721533,
+     "mean_confidence_mappers_disagree": 0.8303719723183389,
+     "share_conf_below_0_8_mappers_agree": 0.2676740420939018,
+     "share_conf_below_0_8_mappers_disagree": 0.3546712802768166
+    }
+   }
+  }
+ },
+ "BowSummit": {
+  "parameters": {
+   "SAT12": 19,
+   "SAT23": 28,
+   "SAT34": 40,
+   "AAT3": 33,
+   "TREE1": 10,
+   "CC2": 40,
+   "WIN_SIZE": 1
+  },
+  "port_equals_published_map": 0.9921267433639694,
+  "published_accuracy": 0.8440057775637939,
+  "density_nodata_share_of_study_area": 0.4570023780448615,
+  "accuracy_with_density_nodata_as_zero": 0.7810142834216016,
+  "experiments": {
+   "dem": {
+    "cells": 12462,
+    "deterministic_accuracy": 0.8424008987321457,
+    "most_likely_accuracy": 0.8398330926015086,
+    "brier_deterministic": 0.31519820253570857,
+    "brier_ensemble": 0.2659002086342481,
+    "underrated_share": 0.10295297705023271,
+    "overrated_share": 0.05464612421762157,
+    "expert_class_has_prob_ge_0_1": 0.9084416626544696,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 35835,
+      "mean_predicted": 0.00529593972373378,
+      "observed": 0.03825868564252825
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 1054,
+      "mean_predicted": 0.2897248576850095,
+      "observed": 0.38425047438330173
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 1008,
+      "mean_predicted": 0.5003769841269842,
+      "observed": 0.49007936507936506
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 1006,
+      "mean_predicted": 0.7057455268389662,
+      "observed": 0.6073558648111332
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 10945,
+      "mean_predicted": 0.9824111466423024,
+      "observed": 0.8753768844221106
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.0003209757663296421,
+      "deterministic_accuracy": 0.25
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.07607125662012518,
+      "deterministic_accuracy": 0.5875527426160337
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.10335419675814476,
+      "deterministic_accuracy": 0.65527950310559
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.8202535708554004,
+      "deterministic_accuracy": 0.8898454314224222
+     }
+    ],
+    "flagging": [
+     {
+      "threshold": 0.1,
+      "area_flagged": 0.08874979939014604,
+      "underrated_caught": 0.38893219017926733,
+      "precision": 0.4511754068716094
+     },
+     {
+      "threshold": 0.2,
+      "area_flagged": 0.0655593002728294,
+      "underrated_caught": 0.3141075604053001,
+      "precision": 0.49326805385556916
+     },
+     {
+      "threshold": 0.3,
+      "area_flagged": 0.045739046701974,
+      "underrated_caught": 0.22525331254871395,
+      "precision": 0.5070175438596491
+     }
+    ],
+    "manual_mappers": {
+     "cells": 12313,
+     "share_where_mappers_disagree": 0.32404775440591244,
+     "mean_confidence_mappers_agree": 0.9653274059834195,
+     "mean_confidence_mappers_disagree": 0.8991478696741856,
+     "share_conf_below_0_8_mappers_agree": 0.07389162561576355,
+     "share_conf_below_0_8_mappers_disagree": 0.21077694235588973
+    }
+   },
+   "forest": {
+    "cells": 12462,
+    "deterministic_accuracy": 0.8424008987321457,
+    "most_likely_accuracy": 0.8379072380035307,
+    "brier_deterministic": 0.31519820253570857,
+    "brier_ensemble": 0.3009760873054084,
+    "underrated_share": 0.10295297705023271,
+    "overrated_share": 0.05464612421762157,
+    "expert_class_has_prob_ge_0_1": 0.8616594447119242,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 36919,
+      "mean_predicted": 0.0028695251767382646,
+      "observed": 0.05013678593678052
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 313,
+      "mean_predicted": 0.2827795527156549,
+      "observed": 0.26517571884984026
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 339,
+      "mean_predicted": 0.49271386430678465,
+      "observed": 0.4808259587020649
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 253,
+      "mean_predicted": 0.710790513833992,
+      "observed": 0.6640316205533597
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 12024,
+      "mean_predicted": 0.9914080172987357,
+      "observed": 0.8480538922155688
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.0025678061306371367,
+      "deterministic_accuracy": 0.5
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.01974000962927299,
+      "deterministic_accuracy": 0.7357723577235772
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.035869041887337506,
+      "deterministic_accuracy": 0.5816554809843401
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.9418231423527523,
+      "deterministic_accuracy": 0.8554997017977337
+     }
+    ],
+    "flagging": [
+     {
+      "threshold": 0.1,
+      "area_flagged": 0.010993419996790243,
+      "underrated_caught": 0.05300077942322681,
+      "precision": 0.49635036496350365
+     },
+     {
+      "threshold": 0.2,
+      "area_flagged": 0.007623174450329001,
+      "underrated_caught": 0.037412314886983634,
+      "precision": 0.5052631578947369
+     },
+     {
+      "threshold": 0.3,
+      "area_flagged": 0.005697319852351147,
+      "underrated_caught": 0.027279812938425563,
+      "precision": 0.49295774647887325
+     }
+    ],
+    "manual_mappers": {
+     "cells": 12313,
+     "share_where_mappers_disagree": 0.32404775440591244,
+     "mean_confidence_mappers_agree": 0.9888609876246547,
+     "mean_confidence_mappers_disagree": 0.9590626566416041,
+     "share_conf_below_0_8_mappers_agree": 0.018623092634867236,
+     "share_conf_below_0_8_mappers_disagree": 0.06716791979949875
+    }
+   },
+   "params": {
+    "cells": 12462,
+    "deterministic_accuracy": 0.8424008987321457,
+    "most_likely_accuracy": 0.8306050393195313,
+    "brier_deterministic": 0.31519820253570857,
+    "brier_ensemble": 0.2954400738244262,
+    "underrated_share": 0.10295297705023271,
+    "overrated_share": 0.05464612421762157,
+    "expert_class_has_prob_ge_0_1": 0.8846894559460761,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 35949,
+      "mean_predicted": 0.0023953378397173768,
+      "observed": 0.04378424990959415
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 949,
+      "mean_predicted": 0.2859641728134879,
+      "observed": 0.33719704952581664
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 1036,
+      "mean_predicted": 0.5005598455598456,
+      "observed": 0.47393822393822393
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 860,
+      "mean_predicted": 0.7055581395348837,
+      "observed": 0.6209302325581395
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 11054,
+      "mean_predicted": 0.9932286954948435,
+      "observed": 0.863307400036186
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.0020863424811426736,
+      "deterministic_accuracy": 0.5769230769230769
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.07173808377467501,
+      "deterministic_accuracy": 0.6991051454138703
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.068608570052961,
+      "deterministic_accuracy": 0.6304093567251462
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.8575670036912213,
+      "deterministic_accuracy": 0.8719940114157387
+     }
+    ],
+    "flagging": [
+     {
+      "threshold": 0.1,
+      "area_flagged": 0.09894077997111218,
+      "underrated_caught": 0.34060795011691347,
+      "precision": 0.3544201135442011
+     },
+     {
+      "threshold": 0.2,
+      "area_flagged": 0.08650296902583855,
+      "underrated_caught": 0.3156664068589244,
+      "precision": 0.37569573283859
+     },
+     {
+      "threshold": 0.3,
+      "area_flagged": 0.0694110094687851,
+      "underrated_caught": 0.2946219797349961,
+      "precision": 0.4369942196531792
+     }
+    ],
+    "manual_mappers": {
+     "cells": 12313,
+     "share_where_mappers_disagree": 0.32404775440591244,
+     "mean_confidence_mappers_agree": 0.9792442628859785,
+     "mean_confidence_mappers_disagree": 0.9030350877192982,
+     "share_conf_below_0_8_mappers_agree": 0.04950138171332452,
+     "share_conf_below_0_8_mappers_disagree": 0.23634085213032582
+    }
+   },
+   "inputs": {
+    "cells": 12462,
+    "deterministic_accuracy": 0.8424008987321457,
+    "most_likely_accuracy": 0.8387096774193549,
+    "brier_deterministic": 0.31519820253570857,
+    "brier_ensemble": 0.2609170638741775,
+    "underrated_share": 0.10295297705023271,
+    "overrated_share": 0.05464612421762157,
+    "expert_class_has_prob_ge_0_1": 0.9181511795859413,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 35548,
+      "mean_predicted": 0.006888713851693485,
+      "observed": 0.03673905704962305
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 1292,
+      "mean_predicted": 0.28773993808049536,
+      "observed": 0.3413312693498452
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 1199,
+      "mean_predicted": 0.4982819015846539,
+      "observed": 0.5154295246038365
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 1171,
+      "mean_predicted": 0.7109649871904355,
+      "observed": 0.623398804440649
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 10638,
+      "mean_predicted": 0.9790731340477533,
+      "observed": 0.8805226546343298
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.004413416787032579,
+      "deterministic_accuracy": 0.8
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.0861017493179265,
+      "deterministic_accuracy": 0.5852749301025163
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.1296742095971754,
+      "deterministic_accuracy": 0.6602722772277227
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.7798106242978655,
+      "deterministic_accuracy": 0.9013171434451533
+     }
+    ],
+    "flagging": [
+     {
+      "threshold": 0.1,
+      "area_flagged": 0.08971272668913496,
+      "underrated_caught": 0.406858924395947,
+      "precision": 0.4669051878354204
+     },
+     {
+      "threshold": 0.2,
+      "area_flagged": 0.061226127427379234,
+      "underrated_caught": 0.303975058456742,
+      "precision": 0.5111402359108781
+     },
+     {
+      "threshold": 0.3,
+      "area_flagged": 0.03980099502487562,
+      "underrated_caught": 0.21434138737334374,
+      "precision": 0.5544354838709677
+     }
+    ],
+    "manual_mappers": {
+     "cells": 12313,
+     "share_where_mappers_disagree": 0.32404775440591244,
+     "mean_confidence_mappers_agree": 0.9593596059113301,
+     "mean_confidence_mappers_disagree": 0.8767819548872181,
+     "share_conf_below_0_8_mappers_agree": 0.08578637510513036,
+     "share_conf_below_0_8_mappers_disagree": 0.2596491228070175
+    }
+   },
+   "all": {
+    "cells": 12462,
+    "deterministic_accuracy": 0.8424008987321457,
+    "most_likely_accuracy": 0.8347777242818167,
+    "brier_deterministic": 0.31519820253570857,
+    "brier_ensemble": 0.2503529569892473,
+    "underrated_share": 0.10295297705023271,
+    "overrated_share": 0.05464612421762157,
+    "expert_class_has_prob_ge_0_1": 0.9321136254212807,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 34885,
+      "mean_predicted": 0.00966174573598968,
+      "observed": 0.03153217715350437
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 1783,
+      "mean_predicted": 0.29231912507010654,
+      "observed": 0.3477285473920359
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 1751,
+      "mean_predicted": 0.5012078812107367,
+      "observed": 0.5077098800685322
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 1553,
+      "mean_predicted": 0.6980392788151963,
+      "observed": 0.5904700579523503
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 9876,
+      "mean_predicted": 0.9763137910085056,
+      "observed": 0.9048197650870798
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.009629272989889264,
+      "deterministic_accuracy": 0.6833333333333333
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.13673567645642754,
+      "deterministic_accuracy": 0.6267605633802817
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.13529128550794414,
+      "deterministic_accuracy": 0.66429418742586
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.718343765045739,
+      "deterministic_accuracy": 0.919124218051832
+     }
+    ],
+    "flagging": [
+     {
+      "threshold": 0.1,
+      "area_flagged": 0.15880276039159044,
+      "underrated_caught": 0.5253312548713952,
+      "precision": 0.34057604850934814
+     },
+     {
+      "threshold": 0.2,
+      "area_flagged": 0.11819932595089071,
+      "underrated_caught": 0.4505066250974279,
+      "precision": 0.3923964697895451
+     },
+     {
+      "threshold": 0.3,
+      "area_flagged": 0.09268175252768417,
+      "underrated_caught": 0.3967264224473889,
+      "precision": 0.4406926406926407
+     }
+    ],
+    "manual_mappers": {
+     "cells": 12313,
+     "share_where_mappers_disagree": 0.32404775440591244,
+     "mean_confidence_mappers_agree": 0.9550174216027876,
+     "mean_confidence_mappers_disagree": 0.8088395989974937,
+     "share_conf_below_0_8_mappers_agree": 0.08578637510513036,
+     "share_conf_below_0_8_mappers_disagree": 0.44536340852130324
+    }
+   }
+  }
+ }
+}

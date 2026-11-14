@@ -9,3 +9,5 @@ results/*.npy
 results/run.log
 results/maps/
 docs/paper_tables/
+results/*.log
+results/*.err

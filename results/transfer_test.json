@@ -1,0 +1,97 @@
+{
+ "fit": {
+  "corr_px": 2.1999999999999997,
+  "vri_to_cover_scale": 2.03,
+  "slope_error_sd_deg_west": 4.63
+ },
+ "east_unseen": {
+  "cells": 39150,
+  "deterministic_accuracy": 0.37363984674329503,
+  "most_likely_accuracy": 0.6208429118773946,
+  "brier_deterministic": 1.2527203559875488,
+  "brier_ensemble": 0.5053328275680542,
+  "reliability": [
+   {
+    "bin": "0.0-0.2",
+    "n": 86025,
+    "mean_predicted": 0.023633014410734177,
+    "observed": 0.06851496547460556
+   },
+   {
+    "bin": "0.2-0.4",
+    "n": 23453,
+    "mean_predicted": 0.30096641182899475,
+    "observed": 0.259625643491745
+   },
+   {
+    "bin": "0.4-0.6",
+    "n": 23667,
+    "mean_predicted": 0.4858454763889313,
+    "observed": 0.4301770329475403
+   },
+   {
+    "bin": "0.6-0.8",
+    "n": 14036,
+    "mean_predicted": 0.6957313418388367,
+    "observed": 0.6248219013214111
+   },
+   {
+    "bin": "0.8-1.0",
+    "n": 9419,
+    "mean_predicted": 0.9337100982666016,
+    "observed": 0.8722794055938721
+   }
+  ],
+  "area_flagged_p_higher_0.2": 0.14416347381864622,
+  "underrated_caught": 0.3979381443298969,
+  "det_accuracy_conf_ge_0.9": 0.9752,
+  "share_conf_ge_0.9": 0.15964240102171137,
+  "det_accuracy_conf_lt_0.5": 0.24877042678089797,
+  "share_conf_lt_0.5": 0.16099616858237548
+ },
+ "west_fitted": {
+  "cells": 40320,
+  "deterministic_accuracy": 0.6922619047619047,
+  "most_likely_accuracy": 0.6798859126984127,
+  "brier_deterministic": 0.6154761910438538,
+  "brier_ensemble": 0.45313793420791626,
+  "reliability": [
+   {
+    "bin": "0.0-0.2",
+    "n": 91171,
+    "mean_predicted": 0.03183835744857788,
+    "observed": 0.056520164012908936
+   },
+   {
+    "bin": "0.2-0.4",
+    "n": 23924,
+    "mean_predicted": 0.28369587659835815,
+    "observed": 0.22090788185596466
+   },
+   {
+    "bin": "0.4-0.6",
+    "n": 16200,
+    "mean_predicted": 0.49851173162460327,
+    "observed": 0.4583333432674408
+   },
+   {
+    "bin": "0.6-0.8",
+    "n": 22528,
+    "mean_predicted": 0.7068583965301514,
+    "observed": 0.7144442200660706
+   },
+   {
+    "bin": "0.8-1.0",
+    "n": 7457,
+    "mean_predicted": 0.8891149163246155,
+    "observed": 0.8531581163406372
+   }
+  ],
+  "area_flagged_p_higher_0.2": 0.17232142857142857,
+  "underrated_caught": 0.5158483530142945,
+  "det_accuracy_conf_ge_0.9": 0.8996062992125984,
+  "share_conf_ge_0.9": 0.07559523809523809,
+  "det_accuracy_conf_lt_0.5": 0.48351137947050626,
+  "share_conf_lt_0.5": 0.05339781746031746
+ }
+}

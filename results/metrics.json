@@ -1,0 +1,106 @@
+{
+ "seconds_per_run_10m": 43.7,
+ "seconds_per_run_30m": 2.4,
+ "class_share_lidar10_lidarpcc": [
+  0.0,
+  0.4034,
+  0.2218,
+  0.2791,
+  0.0957
+ ],
+ "class_share_lidar10_vripcc": [
+  0.0,
+  0.1834,
+  0.2696,
+  0.4459,
+  0.1011
+ ],
+ "class_share_cop30_vripcc": [
+  0.0,
+  0.1967,
+  0.3384,
+  0.4004,
+  0.0645
+ ],
+ "class_share_cop30_lidarpcc": [
+  0.0,
+  0.4521,
+  0.2394,
+  0.2646,
+  0.0439
+ ],
+ "agree_forest_swap_10m": 0.5890907029478458,
+ "agree_cop30vri_vs_ref": 0.5262857142857142,
+ "agree_cop30lidarpcc_vs_ref": 0.7511632653061224,
+ "agree_cop30vriscaled_vs_ref": 0.7058265306122449,
+ "error_model": {
+  "bias_m": 10.22313404083252,
+  "sd_m": 16.364643096923828,
+  "strata": [
+   {
+    "cover": "open",
+    "slope": "0-15",
+    "share": 0.104,
+    "bias_m": 3.4,
+    "sd_m": 9.2
+   },
+   {
+    "cover": "open",
+    "slope": "15-30",
+    "share": 0.184,
+    "bias_m": 3.8,
+    "sd_m": 9.1
+   },
+   {
+    "cover": "open",
+    "slope": "30-45",
+    "share": 0.179,
+    "bias_m": 4.3,
+    "sd_m": 12.6
+   },
+   {
+    "cover": "open",
+    "slope": "45-91",
+    "share": 0.046,
+    "bias_m": 4.8,
+    "sd_m": 24.4
+   },
+   {
+    "cover": "forest",
+    "slope": "0-15",
+    "share": 0.093,
+    "bias_m": 15.7,
+    "sd_m": 9.9
+   },
+   {
+    "cover": "forest",
+    "slope": "15-30",
+    "share": 0.12,
+    "bias_m": 16.9,
+    "sd_m": 13.4
+   },
+   {
+    "cover": "forest",
+    "slope": "30-45",
+    "share": 0.201,
+    "bias_m": 18.6,
+    "sd_m": 17.1
+   },
+   {
+    "cover": "forest",
+    "slope": "45-91",
+    "share": 0.074,
+    "bias_m": 12.9,
+    "sd_m": 27.6
+   }
+  ],
+  "slope_error_sd_deg": 5.382321834564209,
+  "slope_error_bias_deg": -0.6094505190849304,
+  "corr_px": 2.2,
+  "simulated_slope_error_sd_deg": 5.41,
+  "half_correlation_px": 2.4,
+  "vri_minus_lidar_pcc_mean": -25.64788095238095,
+  "vri_minus_lidar_pcc_sd": 31.390477377692637,
+  "vri_to_cover_scale": 2.06
+ }
+}

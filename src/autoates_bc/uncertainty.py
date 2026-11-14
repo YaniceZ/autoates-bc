@@ -62,34 +62,46 @@ class ErrorModel:
     params: bool = False
 
 
-def sample_params(rng, base: C.Params) -> C.Params:
-    kw = {k: int(rng.integers(lo, hi + 1)) for k, (lo, hi) in PARAM_RANGES.items()}
+def sample_params(rng, base: C.Params, ranges=None) -> C.Params:
+    ranges = PARAM_RANGES if ranges is None else ranges
+    kw = {k: int(rng.integers(lo, hi + 1)) for k, (lo, hi) in ranges.items()}
     return base.with_(**kw)
 
 
 def monte_carlo(dem, pcc, cell_size, model: ErrorModel, n, seed=0, base=None,
-                progress=None):
-    """Run ``n`` perturbed AutoATES runs. Returns counts with shape (5, H, W)."""
+                progress=None, runner=None, param_ranges=None, forest_max=100,
+                nodata=None):
+    """Run ``n`` perturbed AutoATES runs. Returns counts with shape (5, H, W).
+
+    ``runner(dem, forest, params)`` replaces the default canopy-cover pipeline,
+    for other forest inputs or DEMs with nodata. Cells equal to ``nodata`` in
+    the DEM, and negative forest cells, are left untouched.
+    """
     rng = np.random.default_rng(seed)
     base = base or C.Params.for_forest("pcc")
     counts = np.zeros((5,) + dem.shape, np.uint16)
     perturb_dem = np.any(np.asarray(model.dem_sd) > 0)
+    inside = np.ones(dem.shape, bool) if nodata is None else dem != nodata
     ws = None
-    if not perturb_dem:
-        from . import pra as P
-        ws = P.windshelter(dem, cell_size, radius=max(1, int(round(60.0 / cell_size))))
+    if runner is None:
+        if not perturb_dem:
+            from . import pra as P
+            ws = P.windshelter(dem, cell_size, radius=max(1, int(round(60.0 / cell_size))))
+        runner = lambda d, f, p: PL.run(d, f, cell_size, p, ws=ws)
     sources = [pcc] + list(model.forest_alternatives)
     for i in range(n):
         d = dem
         if perturb_dem:
             d = (dem - model.dem_bias
                  + model.dem_sd * random_field(dem.shape, model.dem_corr_px, rng)).astype(np.float32)
-        f = sources[int(rng.integers(len(sources)))].astype(np.float32)
+            d = np.where(inside, d, dem).astype(np.float32)
+        src = sources[int(rng.integers(len(sources)))]
+        f = src.astype(np.float32)
         if model.forest_sd > 0:
             f = f + model.forest_sd * random_field(dem.shape, model.forest_corr_px, rng)
-        f = np.clip(np.round(f), 0, 100)
-        p = sample_params(rng, base) if model.params else base
-        ates = PL.run(d, f, cell_size, p, ws=ws)
+        f = np.where(src < 0, src, np.clip(np.round(f), 0, forest_max))
+        p = sample_params(rng, base, param_ranges) if model.params else base
+        ates = runner(d, f, p)
         for k in range(5):
             counts[k] += ates == k
         if progress:
