@@ -165,15 +165,27 @@ What this shows:
 
 ### A reproducibility note on Bow Summit
 
-In the published Bow Summit inputs, the forest density layer handed to Flow-Py
-(`forest_scaled.tif`) is -9999 over 46% of the study area where the DEM is valid.
-Flow-Py does not treat that value as missing. In the detrainment formula it
-acts as very strong detrainment once the flow has energy, which shortens
-runouts. Passing the layer as published reproduces the published map and the
-84.4% accuracy. Setting those cells to zero forest instead gives 78.1%. I have
-not asked the authors whether this was intended, so this is an observation
-about the archived files, not a claim of an error in the paper.
+In the archived Bow Summit inputs, the forest density layer handed to Flow-Py
+(`forest_scaled.tif`) is -9999 in 14,221 of the 31,118 study-area cells (46%).
+Those are the cells where basal area is 0, and they hold 6,231 of the 7,131
+release cells. At Connaught Creek the same layer is 0 where basal area is 0.
 
+Flow-Py does not treat -9999 as missing. Its detrainment term becomes
+`max(1e-5, 0.046 * z_delta - 3.0)`, which is negligible while the energy line
+height is under about 65 m and larger than the whole flux above it, so flows in
+open terrain stop soon after passing that height. The unmodified upstream
+Flow-Py code gives the same output as this port on such cells.
+
+| Bow Summit, accuracy against the expert benchmark | Overall | Simple | Challenging | Complex | Extreme |
+|---|---|---|---|---|---|
+| Archived AutoATES map | 84.4% | 96.6% | 59.9% | 75.6% | 72.1% |
+| Rerun, layer passed as archived | 84.2% | 96.7% | 57.4% | 76.8% | 72.1% |
+| Rerun, -9999 replaced by 0 | 78.1% | 91.0% | 28.8% | 85.6% | 72.1% |
+
+`scripts/07_bow_summit_density_check.py` reproduces these numbers in under a
+minute. I have not yet heard from the authors whether this was intended, so
+this is an observation about the archived files, not a claim of an error in
+the paper.
 
 ## Limits
 
@@ -204,6 +216,7 @@ python -m venv .venv
 .venv/Scripts/python scripts/03_analyze.py
 .venv/Scripts/python scripts/04_transfer_test.py
 .venv/Scripts/python scripts/06_benchmark_sites.py
+.venv/Scripts/python scripts/07_bow_summit_density_check.py
 .venv/Scripts/python scripts/05_figures.py
 ```
 
