@@ -187,12 +187,68 @@ minute. I have not yet heard from the authors whether this was intended, so
 this is an observation about the archived files, not a claim of an error in
 the paper.
 
+## Five blocks, leave one out
+
+`scripts/08_fetch_sites.py` and `scripts/09_multi_area.py` repeat the 30 m test
+on five 10.5 x 8.4 km blocks that the public lidar mosaic covers completely:
+four in the Coast Mountains (Mamquam, the Sunshine Coast backcountry, and two
+in the inlet country north of Powell River) and one interior block in the
+Marble Range for contrast. For each block, the Copernicus error model, its
+correlation length and the forest scale factors are fitted on the other four
+blocks only, and the 120-run ensemble is scored against the held-out block's
+own lidar run.
+
+![Five blocks, leave one out](results/figures/fig6_multi_area.png)
+
+Coast Mountains blocks, VRI as the forest input:
+
+| Block | Single 30 m map matches lidar | Most likely class | Brier, single to ensemble | Single-map accuracy where agreement > 90% | Area flagged to under-rated caught |
+|---|---|---|---|---|---|
+| Mamquam | 52.6% | 62.5% | 0.95 to 0.51 | 89% (11% of area) | 22% to 60% |
+| Sunshine Coast | 51.5% | 62.9% | 0.97 to 0.50 | 92% (8%) | 25% to 66% |
+| Powell River N1 | 54.8% | 57.4% | 0.90 to 0.60 | 75% (4%) | 21% to 50% |
+| Powell River N2 | 64.6% | 71.1% | 0.71 to 0.42 | 85% (8%) | 20% to 57% |
+
+- **The pattern from Mamquam holds on unseen blocks.** In every Coast Mountains
+  block the ensemble halves the Brier score, its most likely class beats the
+  single map, and accuracy rises steadily with agreement.
+- **The probabilities are slightly overconfident.** Where the ensemble says
+  0.87 to 0.91, lidar agrees 73 to 87% of the time. Powell River N1, the
+  steepest block (21% extreme terrain, Copernicus slope error 6.9 degrees), is
+  the weakest.
+- **The Marble Range block says little.** 96% of it is simple terrain, so every
+  configuration scores above 93%.
+
+### Province-wide forest layers
+
+Share of cells where a single 30 m run matches the lidar run, mean of the four
+Coast Mountains blocks:
+
+| Forest input | Match |
+|---|---|
+| VRI crown closure as is | 55.9% |
+| SCANFI crown closure as is | 54.3% |
+| SCANFI x 1.63 to 1.68 | 63.1% |
+| VRI x 1.65 to 1.73 | 66.9% |
+| Lidar canopy cover (not available province-wide; upper bound) | 73.0% |
+
+Both province-wide products read 10 to 39 points below lidar canopy cover.
+Scaling either by a single factor fitted on the other blocks recovers most of
+the gap, and the factor barely changes from block to block. Scaled VRI closes
+about 11 of the 17 points between raw VRI and lidar canopy. SCANFI, the
+national 30 m product, is not better than VRI here once both are scaled.
+
+This is a calibration against lidar canopy cover, which AutoATES' canopy-cover
+thresholds may or may not have been tuned to. Whether scaled VRI also brings
+the maps closer to expert judgement has not been tested.
+
 ## Limits
 
 - The Coast Mountains reference is AutoATES on lidar, not expert judgement. That
   comparison measures sensitivity to input data, not correctness.
-- One Coast Mountains block. The out-of-sample test is a split of that block and
-  says nothing about other ranges.
+- Four Coast Mountains blocks, all within about 120 km of each other, plus one
+  interior block that is almost all simple terrain. The North Shore, the
+  northern Coast Mountains and Vancouver Island are not covered.
 - The lidar error (0.5 m) and the forest noise levels are assumptions.
 - The ensemble covers input and threshold uncertainty only. It cannot see errors
   in the structure of the model, such as a release-area model that misses a
@@ -217,6 +273,8 @@ python -m venv .venv
 .venv/Scripts/python scripts/04_transfer_test.py
 .venv/Scripts/python scripts/06_benchmark_sites.py
 .venv/Scripts/python scripts/07_bow_summit_density_check.py
+.venv/Scripts/python scripts/08_fetch_sites.py
+.venv/Scripts/python scripts/09_multi_area.py
 .venv/Scripts/python scripts/05_figures.py
 ```
 
@@ -231,6 +289,9 @@ GPL-3.0-or-later, because the port derives from AutoATES v2.0 (Toft, Sykes,
 Schauer, Hendrikx, Hetland) and Flow-Py (D'Amboise, Neuhauser et al. 2022), both GPL-3.0. The PRA model follows
 Veitinger et al. (2016) and Sharp (2018). ATES is described in Statham et al.
 (2006) and in the ATES v.2 paper in NHESS.
+
+SCANFI crown closure: Guindon et al. (2023), Natural Resources Canada,
+https://doi.org/10.23687/18e6a919-53fd-41ce-b4e2-44a9707c52dc.
 
 Contains information licensed under the Open Government Licence - Canada and the
 Open Government Licence - British Columbia, and Copernicus DEM data (c) DLR e.V.

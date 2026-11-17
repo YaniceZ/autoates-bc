@@ -12,3 +12,4 @@ docs/paper_tables/
 results/*.log
 results/*.err
 docs/outreach/
+results/sites/

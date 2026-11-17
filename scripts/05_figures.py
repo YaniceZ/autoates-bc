@@ -357,6 +357,64 @@ def main():
             ax.text(-0.42, 1.03, next(letters), transform=ax.transAxes, fontsize=9, fontweight="bold", va="bottom")
         save(fig, "fig5_expert_benchmarks")
 
+    # ---------------- Fig 6: five blocks, leave-one-area-out
+    ma = json.loads((R / "multi_area.json").read_text(encoding="utf8")) if (R / "multi_area.json").exists() else {}
+    if len(ma) >= 2:
+        short = {"mamquam": "Mamquam", "coast_4986": "Sunshine Coast", "coast_5036": "Powell R. N1",
+                 "coast_5066": "Powell R. N2", "marble_5122": "Marble Range*"}
+        ids = [k for k in short if k in ma]
+        fig, axes = plt.subplots(1, 3, figsize=(W2, W2 * 0.36))
+        ax = axes[0]
+        layers = [("vri", "VRI", "#9aa3ad"), ("scanfi", "SCANFI", "#c9a227"),
+                  ("vri_scaled", "VRI x scale", "#2c6fbb"), ("scanfi_scaled", "SCANFI x scale", "#d95f0e"),
+                  ("lidar_cover", "lidar canopy (upper bound)", "#1a1a1a")]
+        ys = np.arange(len(ids))[::-1]
+        for j, (key, lab, col) in enumerate(layers):
+            vals = [ma[i]["forest_layers"][key]["single_matches_lidar"] * 100 for i in ids]
+            ax.scatter(vals, ys + (j - 2) * 0.12, s=16, color=col, label=lab, zorder=3, edgecolor="white", linewidth=0.4)
+        ax.set_yticks(ys)
+        ax.set_yticklabels([short[i] for i in ids])
+        ax.set_xlabel("Single 30 m run matches lidar run (%)")
+        ax.set_xlim(35, 100)
+        ax.grid(axis="x", color="#eef0f3", lw=0.6)
+        ax.legend(frameon=False, loc="lower left", bbox_to_anchor=(-0.02, 1.0), ncol=3, fontsize=5.6,
+                  handletextpad=0.2, columnspacing=0.8, borderaxespad=0)
+        ax.tick_params(axis="y", length=0)
+
+        ax = axes[1]
+        ax.plot([0, 1], [0, 1], color=RULE, lw=0.8, zorder=1)
+        cols = plt.cm.viridis(np.linspace(0.05, 0.85, len(ids)))
+        for i, c in zip(ids, cols):
+            rows = ma[i]["ensembles"]["vri"]["reliability"]
+            ax.plot([r["mean_predicted"] for r in rows], [r["observed"] for r in rows], "-o", color=c, ms=2.6,
+                    lw=1.1, label=short[i], mec="white", mew=0.3)
+        ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.set_aspect("equal")
+        ax.set_xlabel("Ensemble probability of a class")
+        ax.set_ylabel("Share where lidar gives it")
+        ax.legend(frameon=False, loc="upper left", fontsize=5.4, handlelength=1.2, borderaxespad=0.1)
+
+        ax = axes[2]
+        labs = ["<50%", "50-70%", "70-90%", ">90%"]
+        for i, c in zip(ids, cols):
+            rows = ma[i]["ensembles"]["vri"]["accuracy_by_confidence"]
+            xs = [k for k, r in enumerate(rows) if r["single_accuracy"] is not None and r["share"] >= 0.02]
+            ax.plot(xs, [rows[k]["single_accuracy"] * 100 for k in xs], "-o", color=c, ms=2.6, lw=1.1,
+                    mec="white", mew=0.3)
+        ax.set_xticks(range(4)); ax.set_xticklabels(labs)
+        ax.set_ylim(0, 105)
+        ax.set_xlabel("Ensemble agreement on the class")
+        ax.set_ylabel("Single 30 m run matches lidar (%)")
+        ax.grid(axis="y", color="#eef0f3", lw=0.6)
+        for ax, letter in zip(axes, "abc"):
+            for sp in ("top", "right"):
+                ax.spines[sp].set_visible(False)
+            ax.text(-0.32 if letter == "a" else -0.25, 1.08, letter, transform=ax.transAxes, fontsize=9,
+                    fontweight="bold", va="bottom")
+        fig.text(0.01, 0.01, "* interior block, outside the Coast Mountains. Error model and scale factors "
+                 "fitted on the other four blocks each time.", fontsize=5.6, color=MUTED)
+        fig.subplots_adjust(left=0.1, right=0.985, top=0.8, bottom=0.2, wspace=0.42)
+        save(fig, "fig6_multi_area")
+
 
 if __name__ == "__main__":
     main()

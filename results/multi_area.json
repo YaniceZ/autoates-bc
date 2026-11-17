@@ -1,0 +1,937 @@
+{
+ "mamquam": {
+  "label": "49.78N 122.78W, east of the Mamquam Icefield",
+  "range": "Coast Mountains",
+  "class_share_lidar": [
+   0.0,
+   0.4042,
+   0.2188,
+   0.2807,
+   0.0964
+  ],
+  "copernicus_error": {
+   "bias_m": 10.22313404083252,
+   "sd_m": 16.364643096923828,
+   "slope_error_sd_deg": 5.382321834564209,
+   "own_corr_px": 2.1999999999999997
+  },
+  "transferred": {
+   "corr_px": 2.3499999999999996,
+   "vri_scale": 1.65,
+   "scanfi_scale": 1.63
+  },
+  "forest_layers": {
+   "vri": {
+    "single_matches_lidar": 0.5262857142857142,
+    "underrated_share": 0.12574489795918367,
+    "overrated_share": 0.34796938775510206,
+    "cover_bias_vs_lidar": -25.643663265306124,
+    "cover_rmse_vs_lidar": 37.769860163028056
+   },
+   "vri_scaled": {
+    "single_matches_lidar": 0.6772959183673469,
+    "underrated_share": 0.16031632653061226,
+    "overrated_share": 0.16238775510204081,
+    "cover_bias_vs_lidar": -13.280061224489796,
+    "cover_rmse_vs_lidar": 25.914677505307328
+   },
+   "scanfi": {
+    "single_matches_lidar": 0.5480714285714285,
+    "underrated_share": 0.18628571428571428,
+    "overrated_share": 0.2656428571428571,
+    "cover_bias_vs_lidar": -20.7820306122449,
+    "cover_rmse_vs_lidar": 32.92242505388343
+   },
+   "scanfi_scaled": {
+    "single_matches_lidar": 0.6711428571428572,
+    "underrated_share": 0.228,
+    "overrated_share": 0.10085714285714285,
+    "cover_bias_vs_lidar": -5.9302551020408165,
+    "cover_rmse_vs_lidar": 20.921275910285342
+   },
+   "lidar_cover": {
+    "single_matches_lidar": 0.7511632653061224,
+    "underrated_share": 0.19905102040816328,
+    "overrated_share": 0.04978571428571429,
+    "cover_bias_vs_lidar": 0.0,
+    "cover_rmse_vs_lidar": 0.0
+   }
+  },
+  "ensembles": {
+   "vri": {
+    "single_matches_lidar": 0.5262857142857142,
+    "most_likely_matches_lidar": 0.6252551020408164,
+    "brier_single": 0.9474285840988159,
+    "brier_ensemble": 0.51386958360672,
+    "underrated_share": 0.12574489795918367,
+    "area_flagged": 0.2149795918367347,
+    "underrated_caught": 0.6009088695934431,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 217138,
+      "mean_predicted": 0.032543934881687164,
+      "observed": 0.07208779454231262
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 62943,
+      "mean_predicted": 0.29328200221061707,
+      "observed": 0.25526270270347595
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 47770,
+      "mean_predicted": 0.4906522333621979,
+      "observed": 0.4350847899913788
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 42683,
+      "mean_predicted": 0.6933451294898987,
+      "observed": 0.6545228958129883
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 21466,
+      "mean_predicted": 0.9056609272956848,
+      "observed": 0.8179912567138672
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.12062244897959183,
+      "single_accuracy": 0.3364351577700702
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.4489489795918367,
+      "single_accuracy": 0.4419619519512694
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.31855102040816324,
+      "single_accuracy": 0.5887949260042283
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.11187755102040817,
+      "single_accuracy": 0.8913717621306093
+     }
+    ]
+   },
+   "scanfi": {
+    "single_matches_lidar": 0.5480714285714285,
+    "most_likely_matches_lidar": 0.6339285714285714,
+    "brier_single": 0.9038571715354919,
+    "brier_ensemble": 0.49161189794540405,
+    "underrated_share": 0.18628571428571428,
+    "area_flagged": 0.24012244897959184,
+    "underrated_caught": 0.596351884312007,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 221114,
+      "mean_predicted": 0.033167846500873566,
+      "observed": 0.06288158893585205
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 58404,
+      "mean_predicted": 0.29214420914649963,
+      "observed": 0.2773440182209015
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 48191,
+      "mean_predicted": 0.49227795004844666,
+      "observed": 0.45460769534111023
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 39419,
+      "mean_predicted": 0.6912590861320496,
+      "observed": 0.6264491677284241
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 24872,
+      "mean_predicted": 0.909923791885376,
+      "observed": 0.8562238812446594
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.11289795918367347,
+      "single_accuracy": 0.3121836587129429
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.4446428571428571,
+      "single_accuracy": 0.42942053930005736
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.30423469387755103,
+      "single_accuracy": 0.6391749119570685
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.13822448979591836,
+      "single_accuracy": 0.9218957625867414
+     }
+    ]
+   }
+  }
+ },
+ "coast_4986": {
+  "label": "49.86N 123.62W, Sunshine Coast backcountry",
+  "range": "Coast Mountains",
+  "class_share_lidar": [
+   0.0,
+   0.3525,
+   0.255,
+   0.303,
+   0.0895
+  ],
+  "copernicus_error": {
+   "bias_m": 8.827898979187012,
+   "sd_m": 18.917259216308594,
+   "slope_error_sd_deg": 5.882475852966309,
+   "own_corr_px": 2.3999999999999995
+  },
+  "transferred": {
+   "corr_px": 2.3,
+   "vri_scale": 1.72,
+   "scanfi_scale": 1.65
+  },
+  "forest_layers": {
+   "vri": {
+    "single_matches_lidar": 0.5152040816326531,
+    "underrated_share": 0.17856122448979592,
+    "overrated_share": 0.30623469387755103,
+    "cover_bias_vs_lidar": -20.40326530612245,
+    "cover_rmse_vs_lidar": 32.531961991561595
+   },
+   "vri_scaled": {
+    "single_matches_lidar": 0.6680102040816327,
+    "underrated_share": 0.21505102040816326,
+    "overrated_share": 0.11693877551020408,
+    "cover_bias_vs_lidar": -3.018795918367347,
+    "cover_rmse_vs_lidar": 22.605349737057683
+   },
+   "scanfi": {
+    "single_matches_lidar": 0.5242959183673469,
+    "underrated_share": 0.17592857142857143,
+    "overrated_share": 0.2997755102040816,
+    "cover_bias_vs_lidar": -20.02791836734694,
+    "cover_rmse_vs_lidar": 31.789221636348664
+   },
+   "scanfi_scaled": {
+    "single_matches_lidar": 0.6476938775510204,
+    "underrated_share": 0.2266326530612245,
+    "overrated_share": 0.12567346938775512,
+    "cover_bias_vs_lidar": -4.179316326530612,
+    "cover_rmse_vs_lidar": 20.739233498913332
+   },
+   "lidar_cover": {
+    "single_matches_lidar": 0.7236326530612245,
+    "underrated_share": 0.19746938775510203,
+    "overrated_share": 0.07889795918367347,
+    "cover_bias_vs_lidar": 0.0,
+    "cover_rmse_vs_lidar": 0.0
+   }
+  },
+  "ensembles": {
+   "vri": {
+    "single_matches_lidar": 0.5152040816326531,
+    "most_likely_matches_lidar": 0.628704081632653,
+    "brier_single": 0.9695918560028076,
+    "brier_ensemble": 0.50236976146698,
+    "underrated_share": 0.17856122448979592,
+    "area_flagged": 0.24755102040816326,
+    "underrated_caught": 0.6627807303274473,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 213597,
+      "mean_predicted": 0.03555043786764145,
+      "observed": 0.06718259304761887
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 66994,
+      "mean_predicted": 0.2911618947982788,
+      "observed": 0.25396305322647095
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 50356,
+      "mean_predicted": 0.489799827337265,
+      "observed": 0.4361148476600647
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 41290,
+      "mean_predicted": 0.6943666338920593,
+      "observed": 0.6632840633392334
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 19763,
+      "mean_predicted": 0.888816237449646,
+      "observed": 0.8747659921646118
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.14595918367346938,
+      "single_accuracy": 0.25762024608501116
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.44460204081632654,
+      "single_accuracy": 0.4021023157604829
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.32457142857142857,
+      "single_accuracy": 0.68074069416499
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.08486734693877551,
+      "single_accuracy": 0.9176385716003367
+     }
+    ]
+   },
+   "scanfi": {
+    "single_matches_lidar": 0.5242959183673469,
+    "most_likely_matches_lidar": 0.6113469387755102,
+    "brier_single": 0.9514081478118896,
+    "brier_ensemble": 0.5191527605056763,
+    "underrated_share": 0.17592857142857143,
+    "area_flagged": 0.23673469387755103,
+    "underrated_caught": 0.6127834812365872,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 214539,
+      "mean_predicted": 0.034888722002506256,
+      "observed": 0.06679438054561615
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 62902,
+      "mean_predicted": 0.2947607934474945,
+      "observed": 0.27668437361717224
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 55313,
+      "mean_predicted": 0.49188271164894104,
+      "observed": 0.44747164845466614
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 40283,
+      "mean_predicted": 0.6876782178878784,
+      "observed": 0.6387806534767151
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 18963,
+      "mean_predicted": 0.899895429611206,
+      "observed": 0.8323050141334534
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.13098979591836735,
+      "single_accuracy": 0.30824959102594063
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.49442857142857144,
+      "single_accuracy": 0.4275807982829075
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.27448979591836736,
+      "single_accuracy": 0.6617472118959108
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.10009183673469388,
+      "single_accuracy": 0.9078397390151901
+     }
+    ]
+   }
+  }
+ },
+ "coast_5036": {
+  "label": "50.36N 124.02W, inlet country north of Powell River",
+  "range": "Coast Mountains",
+  "class_share_lidar": [
+   0.0,
+   0.2211,
+   0.1949,
+   0.3692,
+   0.2147
+  ],
+  "copernicus_error": {
+   "bias_m": 6.41110372543335,
+   "sd_m": 23.17194366455078,
+   "slope_error_sd_deg": 6.93233585357666,
+   "own_corr_px": 2.3999999999999995
+  },
+  "transferred": {
+   "corr_px": 2.3,
+   "vri_scale": 1.72,
+   "scanfi_scale": 1.68
+  },
+  "forest_layers": {
+   "vri": {
+    "single_matches_lidar": 0.5484897959183673,
+    "underrated_share": 0.19941836734693877,
+    "overrated_share": 0.2520918367346939,
+    "cover_bias_vs_lidar": -14.118897959183673,
+    "cover_rmse_vs_lidar": 30.527325664802312
+   },
+   "vri_scaled": {
+    "single_matches_lidar": 0.6183061224489796,
+    "underrated_share": 0.22272448979591836,
+    "overrated_share": 0.15896938775510205,
+    "cover_bias_vs_lidar": -3.8439183673469386,
+    "cover_rmse_vs_lidar": 26.856942248490903
+   },
+   "scanfi": {
+    "single_matches_lidar": 0.5061938775510204,
+    "underrated_share": 0.28551020408163263,
+    "overrated_share": 0.20829591836734693,
+    "cover_bias_vs_lidar": -9.690040816326531,
+    "cover_rmse_vs_lidar": 25.54179687796264
+   },
+   "scanfi_scaled": {
+    "single_matches_lidar": 0.5447551020408163,
+    "underrated_share": 0.33853061224489794,
+    "overrated_share": 0.11671428571428571,
+    "cover_bias_vs_lidar": 2.4413979591836736,
+    "cover_rmse_vs_lidar": 21.49902299631121
+   },
+   "lidar_cover": {
+    "single_matches_lidar": 0.6936530612244898,
+    "underrated_share": 0.21764285714285714,
+    "overrated_share": 0.08870408163265306,
+    "cover_bias_vs_lidar": 0.0,
+    "cover_rmse_vs_lidar": 0.0
+   }
+  },
+  "ensembles": {
+   "vri": {
+    "single_matches_lidar": 0.5484897959183673,
+    "most_likely_matches_lidar": 0.5744285714285714,
+    "brier_single": 0.9030203819274902,
+    "brier_ensemble": 0.5955255627632141,
+    "underrated_share": 0.19941836734693877,
+    "area_flagged": 0.20540816326530612,
+    "underrated_caught": 0.49664841631274625,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 213187,
+      "mean_predicted": 0.03452008590102196,
+      "observed": 0.09784837067127228
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 64678,
+      "mean_predicted": 0.29054689407348633,
+      "observed": 0.2404063194990158
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 49674,
+      "mean_predicted": 0.4929661452770233,
+      "observed": 0.3982365131378174
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 49325,
+      "mean_predicted": 0.6944404244422913,
+      "observed": 0.6246122717857361
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 15136,
+      "mean_predicted": 0.8660082221031189,
+      "observed": 0.7267441749572754
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.10038775510204082,
+      "single_accuracy": 0.33258792437487295
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.49809183673469387,
+      "single_accuracy": 0.4851986151230205
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.35972448979591837,
+      "single_accuracy": 0.6725668737412419
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.04179591836734694,
+      "single_accuracy": 0.75341796875
+     }
+    ]
+   },
+   "scanfi": {
+    "single_matches_lidar": 0.5061938775510204,
+    "most_likely_matches_lidar": 0.5386632653061224,
+    "brier_single": 0.987612247467041,
+    "brier_ensemble": 0.631820797920227,
+    "underrated_share": 0.28551020408163263,
+    "area_flagged": 0.23740816326530612,
+    "underrated_caught": 0.4624374553252323,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 219664,
+      "mean_predicted": 0.035403430461883545,
+      "observed": 0.10525165498256683
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 59225,
+      "mean_predicted": 0.2888824939727783,
+      "observed": 0.2732292115688324
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 46400,
+      "mean_predicted": 0.4945589005947113,
+      "observed": 0.42959052324295044
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 46089,
+      "mean_predicted": 0.6956228017807007,
+      "observed": 0.5526047348976135
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 20622,
+      "mean_predicted": 0.877993643283844,
+      "observed": 0.644748330116272
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.08920408163265306,
+      "single_accuracy": 0.3605582246625486
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.4658163265306122,
+      "single_accuracy": 0.43715224534501645
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.36989795918367346,
+      "single_accuracy": 0.5737655172413794
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.07508163265306123,
+      "single_accuracy": 0.7746670290839902
+     }
+    ]
+   }
+  }
+ },
+ "coast_5066": {
+  "label": "50.66N 124.07W, inlet country north of Powell River",
+  "range": "Coast Mountains",
+  "class_share_lidar": [
+   0.0,
+   0.2575,
+   0.1865,
+   0.4001,
+   0.1559
+  ],
+  "copernicus_error": {
+   "bias_m": 6.678206443786621,
+   "sd_m": 19.374990463256836,
+   "slope_error_sd_deg": 5.907236099243164,
+   "own_corr_px": 2.5999999999999996
+  },
+  "transferred": {
+   "corr_px": 2.2499999999999996,
+   "vri_scale": 1.72,
+   "scanfi_scale": 1.65
+  },
+  "forest_layers": {
+   "vri": {
+    "single_matches_lidar": 0.6455510204081633,
+    "underrated_share": 0.1503469387755102,
+    "overrated_share": 0.20410204081632652,
+    "cover_bias_vs_lidar": -11.944255102040817,
+    "cover_rmse_vs_lidar": 24.377514522315728
+   },
+   "vri_scaled": {
+    "single_matches_lidar": 0.7110408163265306,
+    "underrated_share": 0.18766326530612246,
+    "overrated_share": 0.10129591836734694,
+    "cover_bias_vs_lidar": -1.247408163265306,
+    "cover_rmse_vs_lidar": 16.78666866587767
+   },
+   "scanfi": {
+    "single_matches_lidar": 0.5931938775510204,
+    "underrated_share": 0.1993265306122449,
+    "overrated_share": 0.2074795918367347,
+    "cover_bias_vs_lidar": -11.652183673469388,
+    "cover_rmse_vs_lidar": 25.251390747716798
+   },
+   "scanfi_scaled": {
+    "single_matches_lidar": 0.6598673469387755,
+    "underrated_share": 0.22953061224489796,
+    "overrated_share": 0.11060204081632653,
+    "cover_bias_vs_lidar": -1.5004897959183674,
+    "cover_rmse_vs_lidar": 17.14781059387073
+   },
+   "lidar_cover": {
+    "single_matches_lidar": 0.750969387755102,
+    "underrated_share": 0.17594897959183672,
+    "overrated_share": 0.07308163265306122,
+    "cover_bias_vs_lidar": 0.0,
+    "cover_rmse_vs_lidar": 0.0
+   }
+  },
+  "ensembles": {
+   "vri": {
+    "single_matches_lidar": 0.6455510204081633,
+    "most_likely_matches_lidar": 0.7113367346938776,
+    "brier_single": 0.7088979482650757,
+    "brier_ensemble": 0.4247032701969147,
+    "underrated_share": 0.1503469387755102,
+    "area_flagged": 0.19744897959183674,
+    "underrated_caught": 0.5700420795439121,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 216422,
+      "mean_predicted": 0.03645666688680649,
+      "observed": 0.04924175888299942
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 65392,
+      "mean_predicted": 0.28439921140670776,
+      "observed": 0.1938922256231308
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 44547,
+      "mean_predicted": 0.4949173629283905,
+      "observed": 0.49051564931869507
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 46635,
+      "mean_predicted": 0.6988717317581177,
+      "observed": 0.7776991724967957
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 19004,
+      "mean_predicted": 0.887895941734314,
+      "observed": 0.8706061840057373
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.1066938775510204,
+      "single_accuracy": 0.3520466717674063
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.4477244897959184,
+      "single_accuracy": 0.5784807530141076
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.3650510204081633,
+      "single_accuracy": 0.7692243186582809
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.08053061224489796,
+      "single_accuracy": 0.8466801824632539
+     }
+    ]
+   },
+   "scanfi": {
+    "single_matches_lidar": 0.5931938775510204,
+    "most_likely_matches_lidar": 0.6314081632653061,
+    "brier_single": 0.8136122226715088,
+    "brier_ensemble": 0.5106735229492188,
+    "underrated_share": 0.1993265306122449,
+    "area_flagged": 0.26772448979591834,
+    "underrated_caught": 0.6153373604996416,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 216153,
+      "mean_predicted": 0.03472328186035156,
+      "observed": 0.06612908095121384
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 62833,
+      "mean_predicted": 0.2896532416343689,
+      "observed": 0.24978911876678467
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 47504,
+      "mean_predicted": 0.49314090609550476,
+      "observed": 0.4681079387664795
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 48130,
+      "mean_predicted": 0.6960163116455078,
+      "observed": 0.6750051975250244
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 17380,
+      "mean_predicted": 0.8843062520027161,
+      "observed": 0.7644419074058533
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.10004081632653061,
+      "single_accuracy": 0.34098327213382296
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.4743061224489796,
+      "single_accuracy": 0.5180930252570888
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.35851020408163264,
+      "single_accuracy": 0.7257926794557978
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.06714285714285714,
+      "single_accuracy": 0.7914893617021277
+     }
+    ]
+   }
+  }
+ },
+ "marble_5122": {
+  "label": "51.22N 121.92W, Marble Range",
+  "range": "Interior, east of the Fraser River",
+  "class_share_lidar": [
+   0.0,
+   0.958,
+   0.0134,
+   0.0272,
+   0.0014
+  ],
+  "copernicus_error": {
+   "bias_m": 4.972940921783447,
+   "sd_m": 3.496424674987793,
+   "slope_error_sd_deg": 1.6074985265731812,
+   "own_corr_px": 1.9999999999999998
+  },
+  "transferred": {
+   "corr_px": 2.3999999999999995,
+   "vri_scale": 1.73,
+   "scanfi_scale": 1.67
+  },
+  "forest_layers": {
+   "vri": {
+    "single_matches_lidar": 0.9309081632653061,
+    "underrated_share": 0.012520408163265306,
+    "overrated_share": 0.05657142857142857,
+    "cover_bias_vs_lidar": -39.332959183673466,
+    "cover_rmse_vs_lidar": 46.10655383047457
+   },
+   "vri_scaled": {
+    "single_matches_lidar": 0.9537959183673469,
+    "underrated_share": 0.014489795918367347,
+    "overrated_share": 0.031714285714285716,
+    "cover_bias_vs_lidar": -12.415857142857142,
+    "cover_rmse_vs_lidar": 30.703952746930067
+   },
+   "scanfi": {
+    "single_matches_lidar": 0.9436020408163265,
+    "underrated_share": 0.026387755102040816,
+    "overrated_share": 0.030010204081632654,
+    "cover_bias_vs_lidar": -33.277438775510205,
+    "cover_rmse_vs_lidar": 38.80616469541079
+   },
+   "scanfi_scaled": {
+    "single_matches_lidar": 0.9650204081632653,
+    "underrated_share": 0.02889795918367347,
+    "overrated_share": 0.006081632653061225,
+    "cover_bias_vs_lidar": -3.1043265306122447,
+    "cover_rmse_vs_lidar": 18.840091316560187
+   },
+   "lidar_cover": {
+    "single_matches_lidar": 0.9748163265306122,
+    "underrated_share": 0.01586734693877551,
+    "overrated_share": 0.009316326530612245,
+    "cover_bias_vs_lidar": 0.0,
+    "cover_rmse_vs_lidar": 0.0
+   }
+  },
+  "ensembles": {
+   "vri": {
+    "single_matches_lidar": 0.9309081632653061,
+    "most_likely_matches_lidar": 0.9452959183673469,
+    "brier_single": 0.13818366825580597,
+    "brier_ensemble": 0.07717162370681763,
+    "underrated_share": 0.012520408163265306,
+    "area_flagged": 0.05837755102040816,
+    "underrated_caught": 0.4669926650366748,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 280195,
+      "mean_predicted": 0.007744071539491415,
+      "observed": 0.007352022919803858
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 10872,
+      "mean_predicted": 0.2941800057888031,
+      "observed": 0.21357615292072296
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 9398,
+      "mean_predicted": 0.4915655851364136,
+      "observed": 0.41147053241729736
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 6859,
+      "mean_predicted": 0.693903386592865,
+      "observed": 0.7712494730949402
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 84676,
+      "mean_predicted": 0.9831901788711548,
+      "observed": 0.9974609017372131
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.021336734693877552,
+      "single_accuracy": 0.4514586322333812
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.08075510204081633,
+      "single_accuracy": 0.467778620166793
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.07808163265306123,
+      "single_accuracy": 0.8288029273392578
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.8198265306122449,
+      "single_accuracy": 0.9987304432246742
+     }
+    ]
+   },
+   "scanfi": {
+    "single_matches_lidar": 0.9436020408163265,
+    "most_likely_matches_lidar": 0.9612755102040816,
+    "brier_single": 0.11279591917991638,
+    "brier_ensemble": 0.058173056691884995,
+    "underrated_share": 0.026387755102040816,
+    "area_flagged": 0.02543877551020408,
+    "underrated_caught": 0.32211910286156226,
+    "reliability": [
+     {
+      "bin": "0.0-0.2",
+      "n": 286641,
+      "mean_predicted": 0.006297191604971886,
+      "observed": 0.007500671781599522
+     },
+     {
+      "bin": "0.2-0.4",
+      "n": 6107,
+      "mean_predicted": 0.28341931104660034,
+      "observed": 0.20517438650131226
+     },
+     {
+      "bin": "0.4-0.6",
+      "n": 4120,
+      "mean_predicted": 0.49378642439842224,
+      "observed": 0.3941747546195984
+     },
+     {
+      "bin": "0.6-0.8",
+      "n": 4328,
+      "mean_predicted": 0.6997477412223816,
+      "observed": 0.6716728210449219
+     },
+     {
+      "bin": "0.8-1.0",
+      "n": 90804,
+      "mean_predicted": 0.9845515489578247,
+      "observed": 0.9918726086616516
+     }
+    ],
+    "accuracy_by_confidence": [
+     {
+      "confidence": "0-0.5",
+      "share": 0.008663265306122448,
+      "single_accuracy": 0.43934040047114253
+     },
+     {
+      "confidence": "0.5-0.7",
+      "share": 0.04180612244897959,
+      "single_accuracy": 0.34073712472540885
+     },
+     {
+      "confidence": "0.7-0.9",
+      "share": 0.07007142857142858,
+      "single_accuracy": 0.7054026503567788
+     },
+     {
+      "confidence": "0.9-1.0",
+      "share": 0.8794591836734694,
+      "single_accuracy": 0.9962059243273348
+     }
+    ]
+   }
+  }
+ }
+}
