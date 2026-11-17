@@ -29,8 +29,10 @@ blocks in British Columbia (four in the Coast Mountains, where no AutoATES
 validation has been published), the error model was fitted on the other
 blocks and the 30 m ensemble scored against a lidar-based run of the held-out
 block. In the four Coast Mountains blocks a single 30 m map matched the lidar run
-on 52 to 65% of cells; the ensemble halved the Brier score, and where more than
-90% of runs agreed the single map matched on 75 to 92%. Second, at Connaught
+on 55.9% of cells. The ensemble was nearly calibrated (expected calibration
+error 0.04), improved the Brier score by 11% over a baseline built from
+out-of-sample confusion frequencies, and ranked cells by whether the single map
+was right with an AUC of 0.68. Second, at Connaught
 Creek and Bow Summit we scored against published expert benchmark maps.
 Agreement between runs again identified where the single map and the experts
 differ (83% and 92% accuracy where runs agree, 59% and 63% where only half to

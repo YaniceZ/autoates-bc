@@ -1,4 +1,6 @@
-"""Publication figures (PNG at 400 dpi and vector PDF) in results/figures.
+"""Map figures 2, 3, 4 and 7 of the manuscript (PNG at 400 dpi and vector PDF).
+
+Figures 1, 5 and 6 are drawn by 11_paper_figures.py.
 
 Map conventions: relief by multiplying colour with a hillshade (no grey veil),
 200 m contours, scale bar, UTM 10N grid ticks in km, panel letters. ATES classes
@@ -189,7 +191,7 @@ def main():
     b30.show(axes[1, 1], scalar_rgb(err, DIVERGE, -40, 40), "d", "Copernicus GLO-30 minus lidar", ticks="x")
     colorbar(fig, axes[1, 1], DIVERGE, -40, 40, "difference (m)", [-40, 0, 40], y=-0.2)
     fig.subplots_adjust(left=0.055, right=0.985, top=0.96, bottom=0.12, wspace=0.07, hspace=0.24)
-    save(fig, "fig1_study_area_inputs")
+    save(fig, "fig02_inputs")
 
     # ---------------- Fig 2: lidar configuration, hard map vs probabilistic map
     c = load_mc("rich", "all")
@@ -204,7 +206,7 @@ def main():
         b10.show(axes[2], scalar_rgb(ph, ORANGE, 0, 0.8), "c", "Probability of a higher class than (a)", ticks="x")
         colorbar(fig, axes[2], ORANGE, 0, 0.8, "probability", [0, 0.4, 0.8], y=-0.3)
         fig.subplots_adjust(left=0.05, right=0.99, top=0.94, bottom=0.34, wspace=0.08)
-        save(fig, "fig2_lidar_probabilistic")
+        save(fig, "fig03_lidar_ensemble")
 
     # ---------------- Fig 3: province-wide inputs against the lidar result
     c = load_mc("poor", "all")
@@ -229,66 +231,7 @@ def main():
              "30 m ensemble: most likely class, faded by agreement", ticks="x")
     vba_legend(axes[1, 1], [0.3, -0.36, 0.4, 0.15])
     fig.subplots_adjust(left=0.055, right=0.985, top=0.96, bottom=0.17, wspace=0.07, hspace=0.24)
-    save(fig, "fig3_30m_vs_lidar")
-
-    # ---------------- Fig 4: is the uncertainty honest, and where does it come from
-    if summary:
-        val = summary["validation_30m_vs_lidar"]
-        fig, axes = plt.subplots(1, 3, figsize=(W2, W2 * 0.36))
-        ax = axes[0]
-        ax.plot([0, 1], [0, 1], color=RULE, lw=0.8, zorder=1)
-        rows = val["inputs"]["reliability"]
-        ax.plot([r["mean_predicted"] for r in rows], [r["observed"] for r in rows], "-o", color="#2c6fbb",
-                ms=3.2, mec="white", mew=0.5, label="whole area, error model fitted in place", zorder=3)
-        if transfer:
-            rows = transfer["east_unseen"]["reliability"]
-            ax.plot([r["mean_predicted"] for r in rows], [r["observed"] for r in rows], "-s", color="#d95f0e",
-                    ms=3.2, mec="white", mew=0.5, label="eastern half, model fitted on west", zorder=3)
-        ax.set_xlabel("Ensemble probability of a class")
-        ax.set_ylabel("Share where lidar gives that class")
-        ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.set_aspect("equal")
-        ax.legend(frameon=False, loc="lower left", bbox_to_anchor=(-0.02, 1.0), fontsize=5.8, handlelength=1.6, borderaxespad=0)
-
-        ax = axes[1]
-        rows = val["inputs"]["accuracy_by_confidence"]
-        xs = np.arange(len(rows))
-        acc = [r["deterministic_accuracy"] * 100 for r in rows]
-        ax.bar(xs, acc, width=0.62, color="#2c6fbb", ec="none")
-        for x, a, r in zip(xs, acc, rows):
-            ax.text(x, a + 2, f"{a:.0f}%", ha="center", va="bottom", fontsize=6.5, color=INK)
-        ax.set_xticks(xs)
-        ax.set_xticklabels([f"{lab}\n({r['share'] * 100:.0f}%)" for lab, r in
-                            zip(("<50%", "50-70%", "70-90%", ">90%"), rows)])
-        ax.set_xlabel("Ensemble agreement on the class\n(share of area in brackets)")
-        ax.set_ylabel("Single 30 m run matches lidar (%)")
-        ax.set_ylim(0, 108)
-
-        ax = axes[2]
-        names = [("dem", "DEM error"), ("forest", "Forest layer"), ("params", "Thresholds"), ("all", "All together")]
-        ys = np.arange(len(names))[::-1]
-        for cfg, col, mk, lab, off in (("poor", "#d95f0e", "s", "Copernicus 30 m + VRI", 0.16),
-                                       ("rich", "#2c6fbb", "o", "Lidar 10 m + lidar canopy", -0.16)):
-            vals = [summary["experiments"].get(f"{cfg}/{n}", {}).get("share_conf_below_0.8") for n, _ in names]
-            if any(v is None for v in vals):
-                continue
-            vals = [v * 100 for v in vals]
-            ax.hlines(ys + off, 0, vals, color=col, lw=0.6, alpha=0.5)
-            ax.plot(vals, ys + off, mk, color=col, ms=4, mec="white", mew=0.5, label=lab)
-            for v, y in zip(vals, ys + off):
-                ax.text(v + 3, y, f"{v:.0f}", va="center", fontsize=6, color=INK)
-        ax.set_yticks(ys)
-        ax.set_yticklabels([n for _, n in names])
-        ax.set_ylim(-0.6, 3.9)
-        ax.set_xlim(0, 100)
-        ax.set_xlabel("Terrain with class agreement <80% (%)")
-        ax.legend(frameon=False, loc="lower left", bbox_to_anchor=(-0.02, 1.0), fontsize=5.8, borderaxespad=0, handletextpad=0.3)
-        ax.tick_params(axis="y", length=0)
-        for ax, letter in zip(axes, "abc"):
-            for sp in ("top", "right"):
-                ax.spines[sp].set_visible(False)
-            ax.text(-0.3, 1.08, letter, transform=ax.transAxes, fontsize=9, fontweight="bold", va="bottom", ha="left")
-        fig.subplots_adjust(left=0.075, right=0.975, top=0.82, bottom=0.25, wspace=0.5)
-        save(fig, "fig4_validation_and_sources")
+    save(fig, "fig04_30m_vs_lidar")
 
     # ---------------- Fig 5: expert benchmark sites
     bench = json.loads((R / "benchmark.json").read_text(encoding="utf8")) if (R / "benchmark.json").exists() else {}
@@ -299,6 +242,7 @@ def main():
         gs = fig.add_gridspec(2, 3, left=0.045, right=0.72, top=0.95, bottom=0.2, wspace=0.06, hspace=0.14)
         gb = fig.add_gridspec(2, 1, left=0.81, right=0.985, top=0.95, bottom=0.2, hspace=0.14)
         letters = iter("abcdefgh")
+        pending = []
         for r, (key, label) in enumerate(sites):
             z = np.load(R / f"benchmark_{key}.npz")
             dem, valid, det, counts = z["dem"], z["valid"], z["det"], z["counts_all"].astype(float)
@@ -331,7 +275,8 @@ def main():
                     ax.set_ylabel(label, fontsize=7.5, fontweight="bold", labelpad=3)
                 if c == 0:
                     ax.add_patch(Rectangle((0.15, 0.15), 1.0, 0.05, fc=INK, ec=INK, lw=0.4))
-                    ax.text(0.65, 0.26, "1 km", fontsize=5.5, ha="center", va="bottom", color=INK)
+                    ax.text(0.65, 0.3, "1 km", fontsize=5.5, ha="center", va="bottom", color=INK)
+                last_map = ax
                 if r == len(sites) - 1 and c == 0:
                     class_legend(ax, loc=(0.0, -0.08), ncol=2)
                 if r == len(sites) - 1 and c == 2:
@@ -354,66 +299,12 @@ def main():
                 ax.set_xlabel("Ensemble agreement\n(share of area in brackets)")
             for sp in ("top", "right"):
                 ax.spines[sp].set_visible(False)
-            ax.text(-0.42, 1.03, next(letters), transform=ax.transAxes, fontsize=9, fontweight="bold", va="bottom")
-        save(fig, "fig5_expert_benchmarks")
-
-    # ---------------- Fig 6: five blocks, leave-one-area-out
-    ma = json.loads((R / "multi_area.json").read_text(encoding="utf8")) if (R / "multi_area.json").exists() else {}
-    if len(ma) >= 2:
-        short = {"mamquam": "Mamquam", "coast_4986": "Sunshine Coast", "coast_5036": "Powell R. N1",
-                 "coast_5066": "Powell R. N2", "marble_5122": "Marble Range*"}
-        ids = [k for k in short if k in ma]
-        fig, axes = plt.subplots(1, 3, figsize=(W2, W2 * 0.36))
-        ax = axes[0]
-        layers = [("vri", "VRI", "#9aa3ad"), ("scanfi", "SCANFI", "#c9a227"),
-                  ("vri_scaled", "VRI x scale", "#2c6fbb"), ("scanfi_scaled", "SCANFI x scale", "#d95f0e"),
-                  ("lidar_cover", "lidar canopy (upper bound)", "#1a1a1a")]
-        ys = np.arange(len(ids))[::-1]
-        for j, (key, lab, col) in enumerate(layers):
-            vals = [ma[i]["forest_layers"][key]["single_matches_lidar"] * 100 for i in ids]
-            ax.scatter(vals, ys + (j - 2) * 0.12, s=16, color=col, label=lab, zorder=3, edgecolor="white", linewidth=0.4)
-        ax.set_yticks(ys)
-        ax.set_yticklabels([short[i] for i in ids])
-        ax.set_xlabel("Single 30 m run matches lidar run (%)")
-        ax.set_xlim(35, 100)
-        ax.grid(axis="x", color="#eef0f3", lw=0.6)
-        ax.legend(frameon=False, loc="lower left", bbox_to_anchor=(-0.02, 1.0), ncol=3, fontsize=5.6,
-                  handletextpad=0.2, columnspacing=0.8, borderaxespad=0)
-        ax.tick_params(axis="y", length=0)
-
-        ax = axes[1]
-        ax.plot([0, 1], [0, 1], color=RULE, lw=0.8, zorder=1)
-        cols = plt.cm.viridis(np.linspace(0.05, 0.85, len(ids)))
-        for i, c in zip(ids, cols):
-            rows = ma[i]["ensembles"]["vri"]["reliability"]
-            ax.plot([r["mean_predicted"] for r in rows], [r["observed"] for r in rows], "-o", color=c, ms=2.6,
-                    lw=1.1, label=short[i], mec="white", mew=0.3)
-        ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.set_aspect("equal")
-        ax.set_xlabel("Ensemble probability of a class")
-        ax.set_ylabel("Share where lidar gives it")
-        ax.legend(frameon=False, loc="upper left", fontsize=5.4, handlelength=1.2, borderaxespad=0.1)
-
-        ax = axes[2]
-        labs = ["<50%", "50-70%", "70-90%", ">90%"]
-        for i, c in zip(ids, cols):
-            rows = ma[i]["ensembles"]["vri"]["accuracy_by_confidence"]
-            xs = [k for k, r in enumerate(rows) if r["single_accuracy"] is not None and r["share"] >= 0.02]
-            ax.plot(xs, [rows[k]["single_accuracy"] * 100 for k in xs], "-o", color=c, ms=2.6, lw=1.1,
-                    mec="white", mew=0.3)
-        ax.set_xticks(range(4)); ax.set_xticklabels(labs)
-        ax.set_ylim(0, 105)
-        ax.set_xlabel("Ensemble agreement on the class")
-        ax.set_ylabel("Single 30 m run matches lidar (%)")
-        ax.grid(axis="y", color="#eef0f3", lw=0.6)
-        for ax, letter in zip(axes, "abc"):
-            for sp in ("top", "right"):
-                ax.spines[sp].set_visible(False)
-            ax.text(-0.32 if letter == "a" else -0.25, 1.08, letter, transform=ax.transAxes, fontsize=9,
-                    fontweight="bold", va="bottom")
-        fig.text(0.01, 0.01, "* interior block, outside the Coast Mountains. Error model and scale factors "
-                 "fitted on the other four blocks each time.", fontsize=5.6, color=MUTED)
-        fig.subplots_adjust(left=0.1, right=0.985, top=0.8, bottom=0.2, wspace=0.42)
-        save(fig, "fig6_multi_area")
+            pending.append((ax, last_map, next(letters)))
+        fig.canvas.draw()  # apply the equal aspect so map positions are final
+        for bar_ax, map_ax, lab in pending:
+            top = map_ax.get_position().y1
+            fig.text(bar_ax.get_position().x0 - 0.05, top + 0.006, lab, fontsize=9, fontweight="bold", va="bottom")
+        save(fig, "fig07_expert_benchmarks")
 
 
 if __name__ == "__main__":
