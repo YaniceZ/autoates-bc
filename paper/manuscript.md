@@ -149,7 +149,7 @@ Mamquam grid at 10 m, with about 160 000 release cells, takes about 13 s on a
 | Check | Result |
 |---|---|
 | Classifier on the bundled Bow Summit inputs vs. bundled outputs, all seven intermediate rasters | identical, cell for cell |
-| Release-area model on the bundled test DEM vs. bundled outputs | wind shelter within 10<sup>-5</sup>; continuous and binary release layers identical |
+| Release-area model on the bundled test DEM vs. bundled outputs | wind shelter within 10<sup>-5</sup>; binary release layer identical; continuous layer identical on Windows and within one unit on 1 of 641 601 cells on Linux |
 | Flow-Py vs. the unmodified upstream Python code, 90 × 90 window | identical cell counts; energy-line height and travel angle within 10<sup>-3</sup> |
 | Full chain from DEM and forest layer vs. archived AutoATES maps | 98.5 % (Connaught Creek) and 99.2 % (Bow Summit) of cells identical; published accuracies of 75.1 % and 84.4 % reproduced |
 

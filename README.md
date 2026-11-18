@@ -1,5 +1,7 @@
 # autoates-bc
 
+[![tests](https://github.com/YaniceZ/autoates-bc/actions/workflows/tests.yml/badge.svg)](https://github.com/YaniceZ/autoates-bc/actions/workflows/tests.yml)
+
 **How far can an automated avalanche terrain map be trusted?**
 Propagating input uncertainty through AutoATES v2.0 in the Coast Mountains of
 British Columbia.
@@ -69,12 +71,12 @@ All figures (PNG at 400 dpi and vector PDF) are in
 | Check | Result |
 |---|---|
 | Classifier on the bundled Bow Summit inputs | all seven intermediate rasters identical to the bundled outputs |
-| Release-area model on the bundled test DEM | release layers identical; wind shelter within 10⁻⁵ |
+| Release-area model on the bundled test DEM | binary release layer identical; continuous layer identical on Windows, 1 of 641,601 cells off by one unit on Linux (rounding); wind shelter within 10⁻⁵ |
 | Flow-Py vs. the unmodified upstream code | identical cell counts; other outputs within 10⁻³ |
 | Full chain at the benchmark sites | 98.5 % and 99.2 % of cells identical to the archived maps; published accuracies 75.1 % and 84.4 % reproduced |
 
 One warm run of the full chain on a 10 m, 840 × 1050 grid takes about 13 s on a
-32-thread desktop processor. The four comparisons run with `pytest`.
+32-thread desktop processor. The four comparisons run with `pytest` on every push.
 
 ### Note on the Bow Summit archive
 
