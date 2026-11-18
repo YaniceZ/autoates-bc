@@ -1,8 +1,7 @@
 # Abstract draft
 
-Target: EGU General Assembly 2027 (NH, natural hazards, snow avalanche session)
-or ISSW 2028. Check the session's word limit; this draft is about 300 words.
-Numbers come from results/multi_area.json and results/benchmark.json.
+Conference abstract draft (about 300 words). Numbers come from
+results/statistics.json, results/multi_area.json and results/benchmark.json.
 
 ## Title
 
@@ -41,17 +40,9 @@ improve accuracy.
 
 Forest input dominated the uncertainty in every configuration, even with lidar
 elevation. Inventory crown closure and the national SCANFI product both
-underestimate lidar canopy cover by 10 to 39 points, and a single scale factor
+underestimate lidar canopy cover by 10 to 26 points in the Coast Mountains
+blocks, and a single scale factor
 that transfers between blocks raises agreement with the lidar run from 56% to
 67%, against 73% with lidar canopy itself. We propose
 reporting a run-agreement layer with automated ATES maps to direct expert
 review, and treating forest cover as the first input to improve.
-
-## Notes before submitting
-
-- Ask the AutoATES authors (Sykes, Toft) whether they want to be involved or
-  know of overlapping work; credit them either way.
-- EGU deadline listed by a third party as 12 January 2027; confirm on egu27.eu.
-- ISSW 2028: Snowbird, Utah, dates to be announced on issw.net.
-- Research only: the abstract should not suggest the maps be used for route
-  decisions.

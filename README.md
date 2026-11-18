@@ -12,6 +12,7 @@ simulation, and tests the resulting class probabilities on five lidar-covered
 blocks (leave one out) and two expert benchmark sites.
 
 **Manuscript:** [paper/manuscript.md](paper/manuscript.md) (draft, not peer reviewed).
+**Cite:** see [CITATION.cff](CITATION.cff).
 
 > **Research only.** ATES describes terrain, not conditions on a given day.
 > Nothing here is suitable for deciding whether a slope or route is safe. Use
@@ -81,9 +82,9 @@ In the archived Bow Summit inputs the forest density layer passed to Flow-Py is
 −9999 in 14,221 of 31,118 study-area cells (where basal area is 0). Flow-Py does
 not treat that value as missing, and flows over open terrain stop early. Passing
 the layer as archived reproduces the published 84.4 %; setting those cells to 0
-gives 78.1 %. `scripts/07_bow_summit_density_check.py` reproduces this. The
-authors have been asked whether it was intended; this is an observation about
-the archived files, not a claim of an error in the paper.
+gives 78.1 %. `scripts/07_bow_summit_density_check.py` reproduces this. Whether it was
+intended has not been confirmed with the authors, so this is an observation
+about the archived files, not a claim of an error in the paper.
 
 ## Repository
 
@@ -106,18 +107,17 @@ docs/                 conference abstract draft
 
 ```bash
 git clone https://github.com/AutoATES/AutoATES-v2.0 vendor/AutoATES-v2.0
-python -m venv .venv
-.venv/Scripts/python -m pip install -e ".[dev]" pyreadr pandas pyshp
-.venv/Scripts/python -m pytest
-.venv/Scripts/python scripts/01_fetch_data.py
-.venv/Scripts/python scripts/02_run_experiments.py
-.venv/Scripts/python scripts/03_analyze.py
-.venv/Scripts/python scripts/06_benchmark_sites.py
-.venv/Scripts/python scripts/08_fetch_sites.py
-.venv/Scripts/python scripts/09_multi_area.py
-.venv/Scripts/python scripts/10_statistics.py
-.venv/Scripts/python scripts/05_figures.py
-.venv/Scripts/python scripts/11_paper_figures.py
+python -m pip install -e ".[dev]" pyreadr pandas pyshp
+python -m pytest
+python scripts/01_fetch_data.py
+python scripts/02_run_experiments.py
+python scripts/03_analyze.py
+python scripts/06_benchmark_sites.py
+python scripts/08_fetch_sites.py
+python scripts/09_multi_area.py
+python scripts/10_statistics.py
+python scripts/05_figures.py
+python scripts/11_paper_figures.py
 ```
 
 `06` needs the OSF archives named in its docstring in `data/osf/`; `11` needs

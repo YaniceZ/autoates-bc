@@ -1,0 +1,21 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Fetch the upstream AutoATES v2.0 repository used as reference
+        run: git clone --depth 1 https://github.com/AutoATES/AutoATES-v2.0 vendor/AutoATES-v2.0
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+      - name: Compare with upstream code and data
+        run: python -m pytest -q

@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+message: "If you use this software or its results, please cite it as below, and cite AutoATES v2.0 and Flow-Py."
+title: "autoates-bc: propagating input uncertainty through AutoATES v2.0"
+authors:
+  - family-names: Zeng
+    given-names: Yanice
+license: GPL-3.0-or-later
+repository-code: "https://github.com/YaniceZ/autoates-bc"
+date-released: 2026-11-17
+keywords:
+  - avalanche terrain exposure scale
+  - ATES
+  - uncertainty
+  - Monte Carlo
+  - GIS
+  - British Columbia
+references:
+  - type: article
+    title: "AutoATES v2.0: Automated Avalanche Terrain Exposure Scale mapping"
+    authors:
+      - family-names: Toft
+        given-names: Håvard B.
+      - family-names: Sykes
+        given-names: John
+      - family-names: Schauer
+        given-names: Andrew
+      - family-names: Hendrikx
+        given-names: Jordy
+      - family-names: Hetland
+        given-names: Audun
+    journal: "Natural Hazards and Earth System Sciences"
+    volume: 24
+    start: 1779
+    end: 1793
+    year: 2024
+    doi: 10.5194/nhess-24-1779-2024
+  - type: article
+    title: "Flow-Py v1.0: a customizable, open-source simulation tool to estimate runout and intensity of gravitational mass flows"
+    authors:
+      - family-names: D'Amboise
+        given-names: Christopher J. L.
+      - name: "and others"
+    journal: "Geoscientific Model Development"
+    volume: 15
+    start: 2423
+    end: 2439
+    year: 2022
+    doi: 10.5194/gmd-15-2423-2022

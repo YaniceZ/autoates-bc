@@ -442,9 +442,9 @@ not treat −9999 as missing: its detrainment term becomes negligible below an
 energy-line height of about 65 m and exceeds the whole flux above it, so flows
 over open terrain stop early. Passing the layer as archived reproduces the
 published map and its 84.4 % accuracy; replacing −9999 by zero gives 78.1 %, with
-challenging terrain falling from 57 % to 29 %. We have asked the authors whether
-this was intended and report it as an observation about the archived files,
-not as an error in the published study.
+challenging terrain falling from 57 % to 29 %. Whether this was intended has
+not been confirmed with the authors, so we report it as an observation about
+the archived files, not as an error in the published study.
 
 ### 5.5 Limitations
 
